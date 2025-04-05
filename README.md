@@ -1,4 +1,4 @@
-# Whipser documentation
+# Whisper documentation
 
 When writing documentation, consider the following questions:
 
