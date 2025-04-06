@@ -187,6 +187,7 @@
                     <li><a href="#line9_1">Dockerisation</a></li>
                     <li><a href="#line9_2">Pushing to ECR</a></li>
                     <li><a href="#line9_3">Deploying on ECS</a></li>
+                    <li><a href="#line9_4">Reference</a></li>
                   </ul>
                 </li>
                 <li><a href="#line10">CI/CD</a></li>
@@ -1162,7 +1163,16 @@ docker buildx build \
               which means that AWS has now been successfully updated to use the
               newest version of your application.
               <h4 id="line9_3">Deploying to ECS</h4>
-              <p>The final</p>
+              <p>
+                The final step in the deployment process is spinning up new
+                containers that are using the image hosting the updated version
+                of our application. This is a simple case of taking down the
+                previous containers and reloading them. This causes them to
+                automatically use the updated version of the image, and is a
+                task that can be done in the AWS UI.
+              </p>
+              <h4 id="line9_4">Reference</h4>
+              <p>test</p>
             </section>
             <!-- end section -->
 
