@@ -1172,7 +1172,177 @@ docker buildx build \
                 task that can be done in the AWS UI.
               </p>
               <h4 id="line9_4">Reference</h4>
-              <p>test</p>
+              <p>
+                This short guide will walk you through the process of deploying
+                your React application to AWS using ECS (Elastic Container
+                Service) and ECR (Elastic Container Registry). ECR is where you
+                push your images, and ECS is the service that runs containers
+                based on the images that are in ECR.
+              </p>
+              <strong>Prerequisites</strong>
+              <ul>
+                <li>— AWS account (first year free)</li>
+                <li>— AWS CLI - install using `brew install awscli`</li>
+                <li>— Docker</li>
+              </ul>
+              <strong>Step 1: Set Up AWS ECR in the AWS console</strong>
+              <ol>
+                <li>Go to ECR (under the Services tab).</li>
+                <li>Click Create repository.</li>
+                <li>Choose Private.</li>
+                <li>Click Create repository.</li>
+              </ol>
+              <strong
+                >Step 2: Containerize Your Frontend Application with
+                Docker</strong
+              >
+              <ol>
+                <li>
+                  Create a Dockerfile at the root. Here's what it may look like:
+                </li>
+                <pre class="brush: bash">
+                    # Step 1: Use Node.js image
+FROM node:16 as build
+
+# Step 2: Set working directory inside the container
+WORKDIR /app
+
+# Step 3: Copy the package files
+COPY package*.json ./
+
+# Step 4: Install dependencies
+RUN npm install
+
+# Step 5: Copy all the source files
+COPY . .
+
+# Step 6: Build the app for production
+RUN npm run build
+
+# Step 7: Serve the app (using a simple HTTP server)
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Expose port 80 for the app
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+                </pre>
+                <p>
+                  This is setting out the instructions for what Docker should do
+                  when it receives a request to construct your application into
+                  an image.
+                </p>
+                <li>Run the following command at the root:</li>
+                <pre class="brush: bash">
+                    docker compose build
+                </pre>
+                <p>
+                  This will tell Docker to construct your application into an
+                  image.
+                </p>
+                <li>Login to AWS ECR using the following:</li>
+                <pre class="brush: bash">
+                    aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin {your_account_id}.dkr.ecr.us-west-2.amazonaws.com
+                </pre>
+                <p>
+                  You can find your account ID in the top right of the AWS
+                  dashboard.
+                </p>
+                <li>
+                  Tag the image: Replace {your_account_id} with your AWS account
+                  number and frontend-app with your repository name.
+                </li>
+                <pre class="brush: bash">
+                    docker tag frontend-app:latest {your_account_id}.dkr.ecr.us-west-2.amazonaws.com/frontend-app:latest
+                </pre>
+                <li>
+                  Push the Image to ECR: Push the image to your newly created
+                  ECR repository:
+                </li>
+                <pre class="brush: bash">
+                    docker push {your_account_id}.dkr.ecr.us-west-2.amazonaws.com/frontend-app:latest
+                </pre>
+              </ol>
+              <strong>Step 3: Set Up AWS ECS</strong>
+              <ol>
+                <li>Go to ECS > Clusters and click Create Cluster.</li>
+                <li>Choose Networking Only (Fargate) and click Next Step.</li>
+                <li>
+                  Name your cluster (e.g. frontend-cluster) and click Create.
+                </li>
+                <li>
+                  Go to ECS > Task Definitions > Create New Task Definition.
+                </li>
+                <li>Choose Fargate.</li>
+                <li>Name your task (e.g. frontend-task).</li>
+                <li>
+                  Set Task Memory to 0.5GB and Task CPU to 0.25 vCPU if that's
+                  not default.
+                </li>
+                <li>
+                  Under container definitions:
+                  <ul>
+                    <li>— Click Add container.</li>
+                    <li>— Name the container (e.g., frontend-container).</li>
+                    <li>
+                      — Image: Use the ECR URI you pushed earlier, e.g.,
+                      {your_account_id}.dkr.ecr.us-west-2.amazonaws.com/frontend-app:latest.
+                    </li>
+                    <li>
+                      — Set the Port Mappings to 80:80 (container port 80 to the
+                      host's port 80).
+                    </li>
+                    <li>— Click Add and then Create.</li>
+                  </ul>
+                </li>
+                <li>
+                  Create a service:
+                  <ul>
+                    <li>
+                      — Go to ECS > Clusters > frontend-cluster > Services.
+                    </li>
+                    <li>- Click Create.</li>
+                    <li>- Choose Fargate as the launch type.</li>
+                    <li>
+                      - Select your task definition (e.g., frontend-task).
+                    </li>
+                    <li>- Choose 1 Task.</li>
+                    <li>
+                      - Enable Auto-assign public IP under the Networking
+                      section.
+                    </li>
+                    <li>- Choose the default VPC and public subnets.</li>
+                    <li>- Click Next Step, and then Create Service.</li>
+                  </ul>
+                </li>
+              </ol>
+              <strong>Step 4: Set Up Security Groups and Networking</strong>
+              <ol>
+                <li>
+                  Edit Security Group:
+                  <ul>
+                    <li>- Go to EC2 > Security Groups.</li>
+                    <li>
+                      - Find the security group attached to your ECS service.
+                    </li>
+                    <li>- Click Edit inbound rules.</li>
+                    <li>
+                      - Allow inbound traffic by creating a rule and setting the
+                      source to 0.0.0.0/0.
+                    </li>
+                    <li>
+                      - Go to ECS > Clusters > frontend-cluster > Services >
+                      [Your Service].
+                    </li>
+                    <li>- Under Task, find the Public IP.</li>
+                    <li>
+                      Use that IP to access your frontend app, e.g.,
+                      http://{public-ip}:80.
+                    </li>
+                  </ul>
+                </li>
+              </ol>
             </section>
             <!-- end section -->
 
