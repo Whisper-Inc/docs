@@ -257,7 +257,7 @@
               <div class="row">
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
-                    Getting Started
+                    Analysis
                     <p>Syed Abbas</p>
                     <hr />
                   </h2>
@@ -268,62 +268,74 @@
 
               <div class="row">
                 <div class="col-md-12">
+                  <h4>Introduction</h4>
                   <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English.
+                    To start off, our group first explored what software we could create. We foccused on areas which would allow us to apply our learning of system architectures and best designing principles. After exploring many options, we decided to
+                    develop a messaging service application. This service would allow its users to send and recieve direct messages but also send group texts. 
                   </p>
 
-                  <h4>Bootstrap Grid System</h4>
-
-                  <pre class="brush: html; highlight: [2,4]">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div></pre>
-
+                  <h4>Stakeholders</h4>
                   <p>
-                    Our you can use the grid system with 2 columns like this;
+                    The primary stakeholders for this messaging service are teenage students, mainly in school, who use the platform to stay connected with friends both during and outside of school hours. 
+                    The app supports communication around homework, class projects, and planning social activities like get-togethers or study groups. 
+                    These users value quick, easy, and fun ways to chat—whether one-on-one or in group chats—with options to personalize their profiles and manage privacy. 
                   </p>
 
-                  <pre class="brush: html">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div>
-                         </pre>
+                  <h4>User Stories</h4>
 
+                  <h5>Messaging</h5>
+                  <ul>
+                    <li>Users can send and receive real-time messages with read receipts and timestamps.</li>
+                    <li>Users get notified of new messages and can track message status (sent, delivered, read).</li>
+                  </ul>
+
+                  <h5>Group Chats</h5>
+                  <ul>
+                    <li>Users can create group chats and name them.</li>
+                    <li>Users can add or remove members and view a list of participants.</li>
+                  </ul>
+                  
+                  <h5>Account & Personalisation</h5>
+                  <ul>
+                    <li>Users can create and log into their accounts securely.</li>
+                    <li>Users can manage account details like passwords and logout when needed.</li>
+                  </ul>
+                  
+                  <h5>Settings & Preferences</h5>
+                  <ul>
+                    <li>Users can customize notification settings</li>
+                  </ul>
+
+
+                  <h4>Design</h4>
+                  <p>To come up with a basic desing, we deiced to discuss the requirements and then explore how we can apply an architecture</p>
+
+                  <h5>Architecture Style</h5>
+                  
+                  <h6>Mircroservices Achitecure</h6>
                   <p>
-                    Our you can use the grid system with 3 columns like this;
+                    The system is designed using microservices, allowing the frontend and backend to be developed, deployed, and scaled independently. 
+                    Each service is responsible for a specific function, improving flexibility and scalability.
                   </p>
 
-                  <pre class="brush: html">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        YOUR CODES GOES HERE
-                                    </div>
-                                </div>
-                            </div>
-                         </pre>
+                  <h6>Frontend Mircoservice (MVC)</h6>
+                  <p>Model: Represents the user interface data—like messages, chat history, user profiles, and settings. The model contains the necessary information for display but doesn't directly handle user actions.</p>
+                  <p>View: The UI components that the user interacts with,chat rooms, buttons, and settings. This layer is responsible for rendering data to the user in a way that's easy to understand.</p>
+                  <p>Controller: The logic layer that processes user inputs, such as sending messages, joining group chats, or updating profiles. It communicates with the backend to fetch data or send requests and updates the view accordingly.</p>
+
+                  <h6>Backend Mircoservice (MVC)</h6>
+                  <p>Model: Contains the business logic and data structure, such as user authentication, message storage, and group chat management. It manages interactions with the database.</p>
+                  <p>View: The API responses that the frontend receives from the backend. These views are not directly presented to the user but are the data structures (like JSON) that are returned to the frontend for rendering.</p>
+                  <p>Controller: The API controllers that handle incoming requests from the frontend, such as creating accounts, sending messages, or updating group chats. The controller processes requests, interacts with the model (business logic), and returns the necessary data (view) to the frontend.</p>
+
+                  <h6>Database</h6>
+                  <p>Centralised storage for data. It stores</p>
+                  <ul>
+                    <li>User accounts (authentication details)</li>
+                    <li>Messages</li>
+                    <li>Chats</li>
+                  </ul>
+      
                 </div>
                 <!-- end col -->
               </div>
