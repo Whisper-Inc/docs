@@ -8,7 +8,7 @@ When writing documentation, consider the following questions:
 
 ## 🛠️ Components you can use in your documentation:
 
-1. Codeblock: create a `pre` html element like so:
+### 1. Codeblock: create a `pre` html element like so:
 
 ```html
 <pre class="brush: js">
@@ -23,7 +23,7 @@ You can choose from the following languages:
 - Bash
 - Javascript
 
-2. Subtabs: Each tab has subtabs attached to it:
+### 2. Subtabs: Each tab has subtabs attached to it:
 
 ```html
 <a href="#line2">Choosing Technologies</a>
