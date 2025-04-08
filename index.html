@@ -164,9 +164,9 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#line6">Database Setup</a>
+                  <a href="#line6">Database</a>
                   <ul class="nav">
-                    <li><a href="#line6_1">Schema</a></li>
+                    <li><a href="#line6_1">Setup</a></li>
                     <li><a href="#line6_2">UserManager</a></li>
                     <li><a href="#line6_3">Testing</a></li>
                   </ul>
@@ -232,12 +232,9 @@
 
                         <h4>Requirements</h4>
                         <p>
-                          You will need the following software to use this
-                          service locally:
+                          You will need Docker installed to use this service
+                          locally.
                         </p>
-                        <ol>
-                          <li>Docker</li>
-                        </ol>
                         <div class="intro2 clearfix">
                           <p>
                             <i class="fa fa-exclamation-triangle"></i> Some of
@@ -272,66 +269,124 @@
                 <div class="col-md-12">
                   <h4>Stakeholders</h4>
                   <p>
-                    The primary stakeholders for this messaging service are teenage students, mainly in school, who use the platform to stay connected with friends both during and outside of school hours. 
-                    The app supports communication around homework, class projects, and planning social activities like get-togethers or study groups. 
-                    These users value quick, easy, and fun ways to chat—whether one-on-one or in group chats—with options to personalize their profiles and manage privacy. 
+                    The primary stakeholders for this messaging service are
+                    teenage students, mainly in school, who use the platform to
+                    stay connected with friends both during and outside of
+                    school hours. The app supports communication around
+                    homework, class projects, and planning social activities
+                    like get-togethers or study groups. These users value quick,
+                    easy, and fun ways to chat—whether one-on-one or in group
+                    chats—with options to personalize their profiles and manage
+                    privacy.
                   </p>
 
                   <h4>User Stories</h4>
 
-                  <h5>Messaging</h5>
+                  <strong>Messaging</strong>
                   <ul>
-                    <li>Users can send and receive real-time messages with read receipts and timestamps.</li>
-                    <li>Users get notified of new messages and can track message status (sent, delivered, read).</li>
+                    <li>
+                      Users can send and receive real-time messages with read
+                      receipts and timestamps.
+                    </li>
+                    <li>
+                      Users get notified of new messages and can track message
+                      status (sent, delivered, read).
+                    </li>
                   </ul>
 
-                  <h5>Group Chats</h5>
+                  <strong>Group Chats</strong>
                   <ul>
                     <li>Users can create group chats and name them.</li>
-                    <li>Users can add or remove members and view a list of participants.</li>
+                    <li>
+                      Users can add or remove members and view a list of
+                      participants.
+                    </li>
                   </ul>
-                  
-                  <h5>Account & Personalisation</h5>
+
+                  <strong>Account & Personalisation</strong>
                   <ul>
-                    <li>Users can create and log into their accounts securely.</li>
-                    <li>Users can manage account details like passwords and logout when needed.</li>
+                    <li>
+                      Users can create and log into their accounts securely.
+                    </li>
+                    <li>
+                      Users can manage account details like passwords and logout
+                      when needed.
+                    </li>
                   </ul>
-                  
-                  <h5>Settings & Preferences</h5>
+
+                  <strong>Settings & Preferences</strong>
                   <ul>
                     <li>Users can customize notification settings</li>
                   </ul>
 
-
                   <h4>Design</h4>
-                  <p>To come up with a basic desing, we deiced to discuss the requirements and then explore how we can apply an architecture</p>
-
-                  <h5>Architecture Style</h5>
-                  
-                  <h6>Mircroservices Achitecure</h6>
                   <p>
-                    The system is designed using microservices, allowing the frontend and backend to be developed, deployed, and scaled independently. 
-                    Each service is responsible for a specific function, improving flexibility and scalability.
+                    To come up with a basic design, we deiced to discuss the
+                    requirements and then explore how we can apply an
+                    architecture
                   </p>
 
-                  <h6>Frontend Mircoservice (MVC)</h6>
-                  <p>Model: Represents the user interface data—like messages, chat history, user profiles, and settings. The model contains the necessary information for display but doesn't directly handle user actions.</p>
-                  <p>View: The UI components that the user interacts with,chat rooms, buttons, and settings. This layer is responsible for rendering data to the user in a way that's easy to understand.</p>
-                  <p>Controller: The logic layer that processes user inputs, such as sending messages, joining group chats, or updating profiles. It communicates with the backend to fetch data or send requests and updates the view accordingly.</p>
+                  <strong>Architecture Style</strong>
 
-                  <h6>Backend Mircoservice (MVC)</h6>
-                  <p>Model: Contains the business logic and data structure, such as user authentication, message storage, and group chat management. It manages interactions with the database.</p>
-                  <p>View: The API responses that the frontend receives from the backend. These views are not directly presented to the user but are the data structures (like JSON) that are returned to the frontend for rendering.</p>
-                  <p>Controller: The API controllers that handle incoming requests from the frontend, such as creating accounts, sending messages, or updating group chats. The controller processes requests, interacts with the model (business logic), and returns the necessary data (view) to the frontend.</p>
+                  <strong>Mircroservices Achitecure</strong>
+                  <p>
+                    The system is designed using microservices, allowing the
+                    frontend and backend to be developed, deployed, and scaled
+                    independently. Each service is responsible for a specific
+                    function, improving flexibility and scalability.
+                  </p>
 
-                  <h6>Database</h6>
-                  <p>Centralised storage for data. It stores</p>
+                  <strong>Frontend Mircoservice (MVC)</strong>
+                  <p>
+                    Model: Represents the user interface data—like messages,
+                    chat history, user profiles, and settings. The model
+                    contains the necessary information for display but doesn't
+                    directly handle user actions.
+                  </p>
+                  <p>
+                    View: The UI components that the user interacts with,chat
+                    rooms, buttons, and settings. This layer is responsible for
+                    rendering data to the user in a way that's easy to
+                    understand.
+                  </p>
+                  <p>
+                    Controller: The logic layer that processes user inputs, such
+                    as sending messages, joining group chats, or updating
+                    profiles. It communicates with the backend to fetch data or
+                    send requests and updates the view accordingly.
+                  </p>
+
+                  <strong>Backend Mircoservice (MVC)</strong>
+                  <p>
+                    Model: Contains the business logic and data structure, such
+                    as user authentication, message storage, and group chat
+                    management. It manages interactions with the database.
+                  </p>
+                  <p>
+                    View: The API responses that the frontend receives from the
+                    backend. These views are not directly presented to the user
+                    but are the data structures (like JSON) that are returned to
+                    the frontend for rendering.
+                  </p>
+                  <p>
+                    Controller: The API controllers that handle incoming
+                    requests from the frontend, such as creating accounts,
+                    sending messages, or updating group chats. The controller
+                    processes requests, interacts with the model (business
+                    logic), and returns the necessary data (view) to the
+                    frontend.
+                  </p>
+
+                  <strong>Database</strong>
+                  <p>
+                    Centralised storage for data. The database stores the
+                    following:
+                  </p>
                   <ul>
                     <li>User accounts (authentication details)</li>
                     <li>Messages</li>
                     <li>Chats</li>
                   </ul>
-      
                 </div>
                 <!-- end col -->
               </div>
@@ -672,91 +727,41 @@
               <div class="row">
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
-                    Database Setup
+                    Database
                     <p>Jamie Wells</p>
                     <hr />
                   </h2>
                 </div>
                 <!-- end col -->
               </div>
-              <!-- end row -->
-
-              <div class="row">
-                <div class="col-md-12">
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English.
-                  </p>
-                </div>
-
-                <div class="col-md-6">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4>Installation Slider</h4>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-6">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4>Updating Slider</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
+              <h4 id="line6_1">Setup</h4>
+              <p>
+                After deciding that we'd use MongoDB for our database
+                operations, we got started by exploring the UI and some of the
+                documentation that Mongo has laid out. Initially, we set up two
+                databases—one for development, and one for production.
+              </p>
+              <a href="images/upload/mongo.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/mongo.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                At first, we had difficulty connecting with this online
+                instance. We had successfully established a connection, were
+                able to create tables and insert entries into these tables, but
+                we realised that this was only on a local instance. We quickly
+                changed our connection string to reflect that of the online
+                instance, by using the command:
+              </p>
+              <pre class="brush: bash">
+mongosh "mongodb+srv://{username}:{password}@whispercluster.e03b9.mongodb.net/dev?retryWrites=true&w=majority&appName=WhisperCluster"
+              </pre>
+              <p>
+                This command would connect us to the online instance and allow
+                us to propogate our requests externally.
+              </p>
             </section>
             <!-- end section -->
 
