@@ -802,14 +802,41 @@ async def login(request: models.LoginRequest):
                 documentation takes the form of a README.md file in our backend
                 repository.
               </p>
-              <a href="images/upload/endpoint-doc.png" data-rel="prettyPhoto"
+              <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
                 ><img
-                  src="images/upload/endpoint-doc.png"
+                  src="images/upload/endpoints.png"
                   alt=""
                   class="img-responsive img-thumbnail"
               /></a>
+              <br />
+              <br />
               <h4 id="line6_4">Testing</h4>
-              <p>Now that the request handlers</p>
+              <p>
+                Now that the database had been set up and the request handlers
+                for communicating to the database had been committed, it was
+                time to start sending test requests to these endpoints.
+              </p>
+              <p>
+                In order to this, we had two options. We could run copy and
+                paste the localhost URL into the browser and add the endpoint we
+                wanted to hit onto the end, but this wouldn't work for any
+                request that required a request body or request header. To solve
+                this, we used Postman, where we could customise the request
+                type, body, and headers.
+              </p>
+              <a href="images/upload/postman.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/postman.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                By being able to add custom headers to each request, this would
+                allow us to authenticate necessary requests with a custom
+                Whisper API key so that users couldn't make unauthenticated
+                requets. For our automated end-to-end tests, please see
+                <a href="#line8">Writing Tests</a>.
+              </p>
             </section>
             <!-- end section -->
 
