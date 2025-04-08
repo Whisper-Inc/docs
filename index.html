@@ -789,10 +789,25 @@ async def login(request: models.LoginRequest):
         raise HTTPException(status_code=500, detail="Login failed")
               </pre>
               <p>
+                This endpoint will take the LoginRequest pydantic model that
+                we've defined as a parameter, use the helper functions defined
+                in the UserManager class to validate that the user's credentials
+                can be registered, generate a web token associated with the user
+                and return it in the response.
+              </p>
+              <p>
                 It's worth noting that we have also written comprehensive
                 documentation on each endpoint, including how to call it, what
-                it's expecting in the request body, and what it returns.
+                it's expecting in the request body, and what it returns. This
+                documentation takes the form of a README.md file in our backend
+                repository.
               </p>
+              <a href="images/upload/endpoint-doc.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/endpoint-doc.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
               <h4 id="line6_4">Testing</h4>
               <p>Now that the request handlers</p>
             </section>
