@@ -555,7 +555,7 @@
               <!-- end row -->
 
                 <div class="col-md-12">
-                  <h3 id="#line4_1">Initial Ideas and Components</h3>
+                  <h3 id="line4_1">Initial Ideas and Components</h3>
                   <p>
                     As dicussed previously, for the user interface we as a group have decided to use React Js with NextJs and Typescript. For styling, we have decided to use TailwindCSS. I have taken the role to be the main frontend developer in the group.
                     To start off, I looked at the designs ad user intefaces for other messaging service applications such as Mircrosoft Teams. With this, I was able to decide on the main components that I would need to create
@@ -563,15 +563,17 @@
                   </p>
                   <h4>Components for Basic Structure</h4>
                   <p>As we are following MVC, these are our view components</p>
+
+                  <div class="row d-flex align-items-stretch text-center">
                   
-                    <div class="col-md-4">
+                    <!-- Sidebar -->
+                    <div class="col-md-4 mb-4 d-flex flex-column">
                       <img
                         src="images/upload/sidebar.png"
-                        alt=""
-                        class="img-responsive img-thumbnail"
+                        alt="Sidebar Screenshot"
+                        class="img-fluid img-thumbnail mb-3"
                       />
-              
-                      <h5>Sidebar</h5>
+                      <h4>Sidebar</h4>
                       <p>
                        Having this as part of the basic structure is crucial, as it will be the component that allows the users to interact with the application and access different pages such as settings or group chats. Therefore, features
                        will be built on top of this. After discussing with the team, we have decided to only have 3 menus. Direct will allow users to access any priavte chats they may have. Group chats will allow users to access any other chats they may
@@ -579,14 +581,14 @@
                       </p>
                     </div>
 
-                    <div class="col-md-4">
+                    <!-- Chat List -->
+                    <div class="col-md-4 mb-4 d-flex flex-column">
                       <img
                         src="images/upload/chatlist.png"
-                        alt=""
-                        class="img-responsive img-thumbnail"
+                        alt="Chat List Screenshot"
+                        class="img-fluid img-thumbnail mb-3"
                       />
-                    
-                      <h5>Chat List</h5>
+                      <h4>Chat List</h4>
                       <p>
                        This component will allow users to access and their chats. This is another main components as further functionality will be built on top, such as accesssing specific chat messages and loading chats from API's. Using the search bar at the top
                        users will be able to search for specific chats and filter the list accordingly. To start off, I have decided to use mock data to ensure and test that the chats are displayed appropriatelty. Later, I will be using GET requests to
@@ -594,20 +596,21 @@
                       </p>
                     </div>
 
-                    <div class="col-md-4">
+                    <!-- Chat Window -->
+                    <div class="col-md-4 mb-4 d-flex flex-column">
                       <img
                         src="images/upload/chatwindow.png"
-                        alt=""
-                        class="img-responsive img-thumbnail"
+                        alt="Chat Window Screenshot"
+                        class="img-fluid img-thumbnail mb-3"
                       />
-                    
-                      <h5>Chat Window</h5>
+                      <h4>Chat Window</h4>
                       <p>
                        This component will allow users to access their chat messages and edit their chat to add and remove people, hence being another main component, as features will be implmeneted later on. 
                        As a start, I am using mock data for the chat messages to test and ensure they are displayed properly. This makes it easier for me to apply the css styling.
                         
                       </p>
                     </div>
+                  </div>
 
                   <h4>Chat Modal Implementation</h4>
                   <p>For users to be able to create chats and update them, I decided to create a modal which can update.</p>
@@ -618,163 +621,41 @@
                     <li>Remove participants</li>
                   </ul>
                   <img
-                        src="images/upload/updatechatmodal.png"
+                        src="images/upload/updatechatmodal.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
                   <p>The same modal component is used to create and update chats. In the chat list, there is a 'New Chat' button and in the chat window component there is an 'Edit' button to add or remove participants</p>
                   <img
-                        src="images/upload/updatechatmodal2.png"
+                        src="images/upload/updatechatmodal2.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
 
-                  <h3 id="#line4_2">Integrating with Backend</h3>
+                  <h3 id="line4_2">Integrating with Backend</h3>
                   <p>As our main components have been developed, I now moved onto creating model components to define requests and responses that will be sent to the backend API endpoints.</p>
                   <p>Here is an exmple of creat chat request:</p>
                   <img
-                        src="images/upload/chatmodelCode.png"
+                        src="images/upload/chatmodelCode.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
                   <p>I have also defined controller components that will be sending the actual requests to to the backend endpoins. The controller then uses the model to process the data and
                   communicates this with the view components so that the data can be displayed accordingly:</p>
                   <img
-                        src="images/upload/chatControllerCode.png"
+                        src="images/upload/chatControllerCode.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
                   
 
-                  <h3 id="#line4_3">Login System and Web Socket Implementation</h3>
+                  <h3 id="line4_3">Login System and Web Socket Implementation</h3>
                   
 
                   
               
                 </div>
           
-              <!-- end row -->
-            </section>
-            <!-- end section -->
-
-            <section id="line5" class="section">
-              <div class="row">
-                <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
-                    UI Development
-                    <hr />
-                  </h2>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <div class="row">
-                <div class="col-md-12">
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English.
-                  </p>
-                </div>
-
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4 id="line5_1">WordPress Blog Page -</h4>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4 id="line5_2">Blog Post Sections -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4 id="line5_3">Create Blog Gallery -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
-              </div>
               <!-- end row -->
             </section>
             <!-- end section -->
