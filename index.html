@@ -137,16 +137,18 @@
               role="navigation"
             >
               <ul class="nav">
-                <li><a href="#line1">Analysis</a></li>
                 <li>
-                  <a href="#line2">Choosing Technologies</a>
+                  <a href="#line-1">Introduction</a>
+                </li>
+                <li>
+                  <a href="#line0">Team & Decisions</a>
                   <ul class="nav">
-                    <li><a href="#line2_1">Frontend</a></li>
-                    <li><a href="#line2_2">Server</a></li>
-                    <li><a href="#line2_3">Database</a></li>
-                    <li><a href="#line2_4">Deployment</a></li>
+                    <li><a href="#line0_1">Role Definition</a></li>
+                    <li><a href="#line0_2">Collaboration & Leadership</a></li>
+                    <li><a href="#line0_3">Design Choices</a></li>
                   </ul>
                 </li>
+                <li><a href="#line1">Analysis</a></li>
                 <li>
                   <a href="#line3">Project Setup</a>
                   <ul class="nav">
@@ -164,11 +166,12 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#line6">Database Setup</a>
+                  <a href="#line6">Database</a>
                   <ul class="nav">
-                    <li><a href="#line6_1">Schema</a></li>
+                    <li><a href="#line6_1">Setup</a></li>
                     <li><a href="#line6_2">UserManager</a></li>
-                    <li><a href="#line6_3">Testing</a></li>
+                    <li><a href="#line6_3">Endpoints</a></li>
+                    <li><a href="#line6_4">Testing</a></li>
                   </ul>
                 </li>
                 <li>
@@ -198,7 +201,7 @@
             <section class="welcome">
               <div class="row">
                 <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
+                  <h2 class="dark-text" id="line-1">
                     Introduction
                     <hr />
                   </h2>
@@ -232,12 +235,9 @@
 
                         <h4>Requirements</h4>
                         <p>
-                          You will need the following software to use this
-                          service locally:
+                          You will need Docker installed to use this service
+                          locally.
                         </p>
-                        <ol>
-                          <li>Docker</li>
-                        </ol>
                         <div class="intro2 clearfix">
                           <p>
                             <i class="fa fa-exclamation-triangle"></i> Some of
@@ -254,6 +254,26 @@
                 </div>
               </div>
             </section>
+
+            <section id="line0" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    Team and Decisions
+                    <p>Jamie Wells</p>
+                    <hr />
+                  </h2>
+                  <h4 id="line0_1">Role Definition</h4>
+                  <p>Placeholder</p>
+                  <h4 id="line0_2">Collaboration & Leadership</h4>
+                  <p>Placeholder</p>
+                  <h4 id="line0_3">Design Choices</h4>
+                  <p>Placeholder</p>
+                </div>
+                <!-- end col -->
+              </div>
+            </section>
+            <!-- end section -->
 
             <section id="line1" class="section">
               <div class="row">
@@ -272,66 +292,124 @@
                 <div class="col-md-12">
                   <h4>Stakeholders</h4>
                   <p>
-                    The primary stakeholders for this messaging service are teenage students, mainly in school, who use the platform to stay connected with friends both during and outside of school hours. 
-                    The app supports communication around homework, class projects, and planning social activities like get-togethers or study groups. 
-                    These users value quick, easy, and fun ways to chat—whether one-on-one or in group chats—with options to personalize their profiles and manage privacy. 
+                    The primary stakeholders for this messaging service are
+                    teenage students, mainly in school, who use the platform to
+                    stay connected with friends both during and outside of
+                    school hours. The app supports communication around
+                    homework, class projects, and planning social activities
+                    like get-togethers or study groups. These users value quick,
+                    easy, and fun ways to chat—whether one-on-one or in group
+                    chats—with options to personalize their profiles and manage
+                    privacy.
                   </p>
 
                   <h4>User Stories</h4>
 
-                  <h5>Messaging</h5>
+                  <strong>Messaging</strong>
                   <ul>
-                    <li>Users can send and receive real-time messages with read receipts and timestamps.</li>
-                    <li>Users get notified of new messages and can track message status (sent, delivered, read).</li>
+                    <li>
+                      Users can send and receive real-time messages with read
+                      receipts and timestamps.
+                    </li>
+                    <li>
+                      Users get notified of new messages and can track message
+                      status (sent, delivered, read).
+                    </li>
                   </ul>
 
-                  <h5>Group Chats</h5>
+                  <strong>Group Chats</strong>
                   <ul>
                     <li>Users can create group chats and name them.</li>
-                    <li>Users can add or remove members and view a list of participants.</li>
+                    <li>
+                      Users can add or remove members and view a list of
+                      participants.
+                    </li>
                   </ul>
-                  
-                  <h5>Account & Personalisation</h5>
+
+                  <strong>Account & Personalisation</strong>
                   <ul>
-                    <li>Users can create and log into their accounts securely.</li>
-                    <li>Users can manage account details like passwords and logout when needed.</li>
+                    <li>
+                      Users can create and log into their accounts securely.
+                    </li>
+                    <li>
+                      Users can manage account details like passwords and logout
+                      when needed.
+                    </li>
                   </ul>
-                  
-                  <h5>Settings & Preferences</h5>
+
+                  <strong>Settings & Preferences</strong>
                   <ul>
                     <li>Users can customize notification settings</li>
                   </ul>
 
-
                   <h4>Design</h4>
-                  <p>To come up with a basic desing, we deiced to discuss the requirements and then explore how we can apply an architecture</p>
-
-                  <h5>Architecture Style</h5>
-                  
-                  <h6>Mircroservices Achitecure</h6>
                   <p>
-                    The system is designed using microservices, allowing the frontend and backend to be developed, deployed, and scaled independently. 
-                    Each service is responsible for a specific function, improving flexibility and scalability.
+                    To come up with a basic design, we deiced to discuss the
+                    requirements and then explore how we can apply an
+                    architecture
                   </p>
 
-                  <h6>Frontend Mircoservice (MVC)</h6>
-                  <p>Model: Represents the user interface data—like messages, chat history, user profiles, and settings. The model contains the necessary information for display but doesn't directly handle user actions.</p>
-                  <p>View: The UI components that the user interacts with,chat rooms, buttons, and settings. This layer is responsible for rendering data to the user in a way that's easy to understand.</p>
-                  <p>Controller: The logic layer that processes user inputs, such as sending messages, joining group chats, or updating profiles. It communicates with the backend to fetch data or send requests and updates the view accordingly.</p>
+                  <strong>Architecture Style</strong>
 
-                  <h6>Backend Mircoservice (MVC)</h6>
-                  <p>Model: Contains the business logic and data structure, such as user authentication, message storage, and group chat management. It manages interactions with the database.</p>
-                  <p>View: The API responses that the frontend receives from the backend. These views are not directly presented to the user but are the data structures (like JSON) that are returned to the frontend for rendering.</p>
-                  <p>Controller: The API controllers that handle incoming requests from the frontend, such as creating accounts, sending messages, or updating group chats. The controller processes requests, interacts with the model (business logic), and returns the necessary data (view) to the frontend.</p>
+                  <strong>Mircroservices Achitecure</strong>
+                  <p>
+                    The system is designed using microservices, allowing the
+                    frontend and backend to be developed, deployed, and scaled
+                    independently. Each service is responsible for a specific
+                    function, improving flexibility and scalability.
+                  </p>
 
-                  <h6>Database</h6>
-                  <p>Centralised storage for data. It stores</p>
+                  <strong>Frontend Mircoservice (MVC)</strong>
+                  <p>
+                    Model: Represents the user interface data—like messages,
+                    chat history, user profiles, and settings. The model
+                    contains the necessary information for display but doesn't
+                    directly handle user actions.
+                  </p>
+                  <p>
+                    View: The UI components that the user interacts with,chat
+                    rooms, buttons, and settings. This layer is responsible for
+                    rendering data to the user in a way that's easy to
+                    understand.
+                  </p>
+                  <p>
+                    Controller: The logic layer that processes user inputs, such
+                    as sending messages, joining group chats, or updating
+                    profiles. It communicates with the backend to fetch data or
+                    send requests and updates the view accordingly.
+                  </p>
+
+                  <strong>Backend Mircoservice (MVC)</strong>
+                  <p>
+                    Model: Contains the business logic and data structure, such
+                    as user authentication, message storage, and group chat
+                    management. It manages interactions with the database.
+                  </p>
+                  <p>
+                    View: The API responses that the frontend receives from the
+                    backend. These views are not directly presented to the user
+                    but are the data structures (like JSON) that are returned to
+                    the frontend for rendering.
+                  </p>
+                  <p>
+                    Controller: The API controllers that handle incoming
+                    requests from the frontend, such as creating accounts,
+                    sending messages, or updating group chats. The controller
+                    processes requests, interacts with the model (business
+                    logic), and returns the necessary data (view) to the
+                    frontend.
+                  </p>
+
+                  <strong>Database</strong>
+                  <p>
+                    Centralised storage for data. The database stores the
+                    following:
+                  </p>
                   <ul>
                     <li>User accounts (authentication details)</li>
                     <li>Messages</li>
                     <li>Chats</li>
                   </ul>
-      
                 </div>
                 <!-- end col -->
               </div>
@@ -550,7 +628,7 @@
               <div class="row">
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
-                    Initial Endpoints
+                    UI Development
                     <hr />
                   </h2>
                 </div>
@@ -672,91 +750,174 @@
               <div class="row">
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
-                    Database Setup
+                    Database
                     <p>Jamie Wells</p>
                     <hr />
                   </h2>
                 </div>
                 <!-- end col -->
               </div>
-              <!-- end row -->
+              <h4 id="line6_1">Setup</h4>
+              <p>
+                After deciding that we'd use MongoDB for our database
+                operations, we got started by exploring the UI and some of the
+                documentation that Mongo has laid out. Initially, we set up two
+                databases—one for development, and one for production.
+              </p>
+              <a href="images/upload/mongo.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/mongo.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                At first, we had difficulty connecting with this online
+                instance. We had successfully established a connection, were
+                able to create tables and insert entries into these tables, but
+                we realised that this was only on a local instance. We quickly
+                changed our connection string to reflect that of the online
+                instance, by using the command:
+              </p>
+              <pre class="brush: bash">
+mongosh "mongodb+srv://{username}:{password}@whispercluster.e03b9.mongodb.net/dev?retryWrites=true&w=majority&appName=WhisperCluster"
+              </pre>
+              <p>
+                This command would connect us to the online instance and allow
+                us to propogate our requests externally.
+              </p>
+              <h4 id="line6_2">UserManager</h4>
+              <p>
+                The MongoUserManager class is where the PyMongo helper methods
+                are defined. When the server starts up, only one instance of
+                MongoUserManager will be created (when the app settings are
+                defined), which is much more memory efficient than creating a
+                new object for each incoming request.
+              </p>
+              <p>
+                These requests are then handled by the endpoints defined, and
+                use the helper functions to receive outputs on the request data,
+                where the request data is parsed in as arguments.
+              </p>
+              <p>
+                Below is an example of how our register user endpoint uses the
+                register user method in MongoUserManager to execute the
+                necessary database operations:
+              </p>
+              <pre class="brush: python">
+@app.post("/register")
+async def register(request: models.RegisterRequest):
+    try:
+        # Validate input
+        if not request.username or not request.password:
+            raise HTTPException(
+                status_code=400, detail="Username and password are required"
+            )
 
-              <div class="row">
-                <div class="col-md-12">
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English.
-                  </p>
-                </div>
+        # attempting to register user
+        response = config.user_manager.register_user(request.username, request.password)
+        if response:
+            config.logger.info("User registered successfully")
+            return {"message": "User registered successfully"}
+        (...)
+              </pre>
+              <p>
+                This method will get the user details from the request and use
+                the register_user method in the MongoUserManager class to
+                execute the database logic and return the result. This
+                particular method returns a boolean, indicating whether the user
+                registration was successful or not:
+              </p>
+              <pre class="brush: python">
+def register_user(self, username: str, password: str) -> bool:
+    user_exists = self.users_collection.find_one({"username": username})
 
-                <div class="col-md-6">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4>Installation Slider</h4>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
+    if user_exists:
+        return False
 
-                <div class="col-md-6">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                  <h4>Updating Slider</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                  <ul>
-                    <li>
-                      <strong>Step 1</strong> - Lorem the It is a long
-                      established fact that a reader ease read more about
-                      WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 2</strong> - Lorem the It is a long
-                      established fact that a reader will be distracted.. Please
-                      read more about WordPress here.
-                    </li>
-                    <li>
-                      <strong>Step 3</strong> - Lorem the It is a long
-                      established fact that a read.
-                    </li>
-                  </ul>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
+    hashed_password = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+
+    user_document = {
+        "username": username,
+        "password": hashed_password,
+        "created_at": time.time(),
+    }
+    self.users_collection.insert_one(user_document)
+    self.config.logger.info("\nUser added to DB")
+    return True
+              </pre>
+              <br />
+              <h4 id="line6_3">Endpoints</h4>
+              <p>
+                The pymongo API logic had now been written, and the next step
+                was writing request handlers that would operate on this logic.
+                Here is an example of one of the endpoints we have for logging
+                in:
+              </p>
+              <pre class="brush: python">
+@app.post("/login")
+async def login(request: models.LoginRequest):
+    """User login endpoint."""
+    try:
+        # Validate credentials
+        if config.user_manager.validate_user(request.username, request.password):
+            # Generate and return login token
+            token = config.user_manager.generate_token(request.username)
+            return {"token": token, "username": request.username}
+        else:
+            raise HTTPException(status_code=401, detail="Invalid credentials")
+    except Exception as e:
+        config.logger.error(f"Login error: {e}")
+        raise HTTPException(status_code=500, detail="Login failed")
+              </pre>
+              <p>
+                This endpoint will take the LoginRequest pydantic model that
+                we've defined as a parameter, use the helper functions defined
+                in the UserManager class to validate that the user's credentials
+                can be registered, generate a web token associated with the user
+                and return it in the response.
+              </p>
+              <p>
+                It's worth noting that we have also written comprehensive
+                documentation on each endpoint, including how to call it, what
+                it's expecting in the request body, and what it returns. This
+                documentation takes the form of a README.md file in our backend
+                repository.
+              </p>
+              <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/endpoints.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <br />
+              <br />
+              <h4 id="line6_4">Testing</h4>
+              <p>
+                Now that the database had been set up and the request handlers
+                for communicating to the database had been committed, it was
+                time to start sending test requests to these endpoints.
+              </p>
+              <p>
+                In order to this, we had two options. We could run copy and
+                paste the localhost URL into the browser and add the endpoint we
+                wanted to hit onto the end, but this wouldn't work for any
+                request that required a request body or request header. To solve
+                this, we used Postman, where we could customise the request
+                type, body, and headers.
+              </p>
+              <a href="images/upload/postman.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/postman.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                By being able to add custom headers to each request, this would
+                allow us to authenticate necessary requests with a custom
+                Whisper API key so that users couldn't make unauthenticated
+                requets. For our automated end-to-end tests, please see
+                <a href="#line8">Writing Tests</a>.
+              </p>
             </section>
             <!-- end section -->
 
@@ -772,200 +933,8 @@
                 <!-- end col -->
               </div>
               <!-- end row -->
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_1">General Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_2">Style Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_3">Header Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_4">Font Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_5">Slider Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_6">Page Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-
-              <div class="row">
-                <div class="col-md-4">
-                  <a href="upload/thumbnail.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/thumbnail.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                  /></a>
-                </div>
-
-                <div class="col-md-8">
-                  <h4 id="line7_7">Import & Export Options -</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    English.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
+              <h4 id="line7_1">Placeholder</h4>
+              <p>Placeholder</p>
             </section>
             <!-- end section -->
 
@@ -980,87 +949,10 @@
                 </div>
                 <!-- end col -->
               </div>
-              <!-- end row -->
-
-              <div class="row">
-                <div class="col-md-6">
-                  <p>
-                    Please remember you have purchased a very affordable theme
-                    and you have not paid for a full-time web design agency.
-                    Occasionally we will help with small tweaks, but these
-                    requests will be put on a lower priority due to their
-                    nature. Support is also 100% optional and we provide it for
-                    your connivence, so please be patient, polite and
-                    respectful.
-                  </p>
-
-                  <p>
-                    Please visit our
-                    <a href="http://themeforest.net/user/yourusername"
-                      ><strong>profile page</strong></a
-                    >
-                    or ask question
-                    <a href="mailto:yourusername@gmail.com">@yourusername</a>
-                  </p>
-
-                  <strong>Support for my items includes:</strong>
-                  <ul>
-                    <li>
-                      * Responding to questions or problems regarding the item
-                      and its features
-                    </li>
-                    <li>* Fixing bugs and reported issues</li>
-                    <li>
-                      * Providing updates to ensure compatibility with new
-                      software versions
-                    </li>
-                  </ul>
-                  <strong>Item support does not include:</strong>
-                  <ul>
-                    <li>* Customization and installation services</li>
-                    <li>* Support for third party software and plug-ins</li>
-                  </ul>
-                </div>
-
-                <div class="col-md-6">
-                  <strong>Before seeking support, please...</strong>
-                  <ul>
-                    <li>
-                      * Make sure your question is a valid Theme Issue and not a
-                      customization request.
-                    </li>
-                    <li>
-                      * Make sure you have read through the documentation and
-                      any related video guides before asking support on how to
-                      accomplish a task.
-                    </li>
-                    <li>* Make sure to double check the theme FAQs.</li>
-                    <li>
-                      * Try disabling any active plugins to make sure there
-                      isn't a conflict with a plugin. And if there is this way
-                      you can let us know.
-                    </li>
-                    <li>
-                      * If you have customized your theme and now have an issue,
-                      back-track to make sure you didn't make a mistake. If you
-                      have made changes and can't find the issue, please provide
-                      us with your changelog.
-                    </li>
-                    <li>
-                      * Almost 80% of the time we find that the solution to
-                      people's issues can be solved with a simple "Google
-                      Search". You might want to try that before seeking
-                      support. You might be able to fix the issue yourself much
-                      quicker than we can respond to your request.
-                    </li>
-                    <li>
-                      * Make sure to state the name of the theme you are having
-                      issues with when requesting support via ThemeForest.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!-- end row -->
+              <h4 id="line8_1">Unit Tests</h4>
+              <p>Placeholder</p>
+              <h4 id="line8_2">End-to-End Tests</h4>
+              <p>Placeholder</p>
             </section>
             <!-- end section -->
 
@@ -1324,80 +1216,8 @@ CMD ["nginx", "-g", "daemon off;"]
                 </div>
                 <!-- end col -->
               </div>
-              <!-- end row -->
-
-              <div class="row">
-                <div class="col-md-12">
-                  <p>
-                    You can find the version history (changelog.txt) file on
-                    <strong>yourthemename-full.zip</strong> folder or you can
-                    check changelog on theme sale page.
-                  </p>
-                  <p>
-                    Once again, thank you so much for purchasing this theme. As
-                    I said at the beginning, I'd be glad to help you if you have
-                    any questions relating to this theme. No guarantees, but
-                    I'll do my best to assist. If you have a more general
-                    question relating to the themes on ThemeForest, you might
-                    consider visiting the forums and asking your question in the
-                    "Item Discussion" section.
-                  </p>
-
-                  <hr />
-
-                  <h4>Changelog</h4>
-
-                  <pre class="brush: html">
-
-                                        -----------------------------------------------------------------------------------------
-                                        Version 3.8.4 - May 7th, 2015
-                                        -----------------------------------------------------------------------------------------
-
-                                        - new revolution slider plugin version
-                                        - fixed security issue with xss vulnerability
-                                        - improved demo importer for certain server environments
-                                        - updated WooCommerce template files for the outdated message in system status
-                                        - added suhosin check in system status 
-                                        - added information that explains ZipArchive is required on your server for importing demos 
-                                        - portfolio Grid template improvement
-                                        - added more information to demo popup message for individual demo requirements
-                                        - RTL style improvements
-                                        - breadcrumb function improved for various areas
-
-                                        -----------------------------------------------------------------------------------------
-                                        Version 3.8.3 - May 7th, 2015
-                                        -----------------------------------------------------------------------------------------
-                                        - fixed responsive / retina issue for larger logos
-                                        - fusion slider now uses responsive headings all the time
-                                        - dropped custom Avada styles for select boxes in IE since it is not supported
-                                        - fixed compatibility issue with Category Order and Taxonomy Terms Order plugin
-                                        - fixed issue of full width background being affected by padding options
-                                        - tested and fixed hellobar issue 
-                                        - typography settings now apply to single post pages
-                                        - improved smooth scroll in certain situations
-                                        - youtube & vimeo videos will show at normal size in light box as long as video embed link is not used
-                                        - fixed issue of â€œfixedâ€ featured image mode not working for carousels / recent work
-                                        - fixed issue of header tagline font not working with font options
-
-                                        -----------------------------------------------------------------------------------------
-                                        Version 3.8.2 - May 7th, 2015
-                                        -----------------------------------------------------------------------------------------
-                                        - fixed formatting issues with Turkish language files 
-                                        - letter spacing menu option improvement
-                                        - improved fusion slider max content width setting
-                                        - removed the â€œdisable first featured image on productsâ€ setting since it does not apply
-                                        - improved portfolio featured image loading
-                                        - removed encoding from tracking code, space before head, space before body, and custom CSS to stop it from parsing code within TO and removing special characters e.g. +
-                                        - woo login box now shows login fields for logged out users
-                                        - woo cart / my account links now show on mobile 
-                                        - fixed button styling issue with gravity forms
-
-
-                                      </pre
-                  >
-                </div>
-              </div>
-              <!-- end row -->
+              <h4 id="line7_1">Placeholder</h4>
+              <p>Placeholder</p>
             </section>
             <!-- end section -->
 
