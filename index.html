@@ -657,17 +657,17 @@
                   <p>As our main components have been developed, I now moved onto creating model components to define requests and responses that will be sent to the backend API endpoints.</p>
                   <p>Here is an exmple of create chat request:</p>
                   <pre class="brush: js">
-                    public async createGroupChat(
-                    initiator: string,
-                    participants: string[],
-                    chatName: string
-                ): Promise<string> {
-                    const requestBody = {
-                        initiator: initiator,
-                        chat_name: chatName,
-                        participants: participants,
-                        is_group: true,
-                    };
+                  public async createGroupChat(
+                      initiator: string,
+                      participants: string[],
+                      chatName: string
+                  ): Promise<string> {
+                      const requestBody = {
+                          initiator: initiator,
+                          chat_name: chatName,
+                          participants: participants,
+                          is_group: true,
+                      };
                   </pre>
                   <p>I have also defined controller components that will be sending the actual requests to to the backend endpoins. The controller then uses the model to process the data and
                   communicates this with the view components so that the data can be displayed accordingly:</p>
