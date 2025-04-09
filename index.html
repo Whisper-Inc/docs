@@ -635,41 +635,58 @@
                     <li>Name the chat</li>
                     <li>Remove participants</li>
                   </ul>
-                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                  <a href="images/upload/updatechatmodal.png" data-rel="prettyPhoto"
                   ><img
-                        src="images/upload/updatechatmodal.png data-rel="prettyPhoto""
+                        src="images/upload/updatechatmodal.png"
                         alt=""
                         class="img-responsive img-thumbnail"
+                        style="width: 75%; max-width: 500px; margin: 1rem auto; display: block;"
                       />
                   </a>
                   <p>The same modal component is used to create and update chats. In the chat list, there is a 'New Chat' button and in the chat window component there is an 'Edit' button to add or remove participants</p>
-                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                  <a href="images/upload/updatechatmodal2.png" data-rel="prettyPhoto"
                   ><img
-                        src="images/upload/updatechatmodal2.png data-rel="prettyPhoto""
+                        src="images/upload/updatechatmodal2.png"
                         alt=""
                         class="img-responsive img-thumbnail"
+                        style="width: 75%; max-width: 500px; margin: 1rem auto; display: block;"
                       />
                   </a>
                   
                   <h2 id="line4_2">Integrating with Backend</h2>
                   <p>As our main components have been developed, I now moved onto creating model components to define requests and responses that will be sent to the backend API endpoints.</p>
                   <p>Here is an exmple of create chat request:</p>
-                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto">
-                    <img
-                        src="images/upload/chatmodelCode.png"
-                        alt=""
-                        class="img-responsive img-thumbnail"
-                      />
-                  </a>
+                  <pre class="brush: js">
+                    public async createGroupChat(
+                    initiator: string,
+                    participants: string[],
+                    chatName: string
+                ): Promise<string> {
+                    const requestBody = {
+                        initiator: initiator,
+                        chat_name: chatName,
+                        participants: participants,
+                        is_group: true,
+                    };
+                  </pre>
                   <p>I have also defined controller components that will be sending the actual requests to to the backend endpoins. The controller then uses the model to process the data and
                   communicates this with the view components so that the data can be displayed accordingly:</p>
-                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
-                  ><img
-                        src="images/upload/chatControllerCode.png">
-                        alt=""
-                        class="img-responsive img-thumbnail"
-                      />
-                  </a>
+
+                  <pre class="brush: js">
+                    try {
+                      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}create-chat`, {
+                          method: "POST",
+                          headers: {
+                              "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify(requestBody),
+                      });
+          
+                      if (!response.ok) {
+                          throw new Error("Failed to create chat");
+                      }
+                      const responseData = await response.json();
+                  </pre>
 
           
                 <h2 id="line4_3">Login System and Web Socket Implementation</h2>
