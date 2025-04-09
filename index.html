@@ -566,49 +566,63 @@
 
                   <div class="row d-flex align-items-stretch text-center">
                   
-                    <!-- Sidebar -->
-                    <div class="col-md-4 mb-4 d-flex flex-column">
-                      <img
-                        src="images/upload/sidebar.png"
-                        alt="Sidebar Screenshot"
-                        class="img-fluid img-thumbnail mb-3"
-                      />
-                      <h4>Sidebar</h4>
-                      <p>
-                       Having this as part of the basic structure is crucial, as it will be the component that allows the users to interact with the application and access different pages such as settings or group chats. Therefore, features
-                       will be built on top of this. After discussing with the team, we have decided to only have 3 menus. Direct will allow users to access any priavte chats they may have. Group chats will allow users to access any other chats they may
-                       have with multiple people. The settings menu will allow users to access profile and notifications settings.
-                      </p>
+                       <!-- Sidebar -->
+                    <div class="col-md-4 mb-4 d-flex">
+                      <div class="card w-100 h-100">
+                        <img
+                          src="images/upload/sidebar.png"
+                          class="card-img-top img-fluid"
+                          alt="Sidebar"
+                          style="height: 200px; object-fit: cover"
+                        />
+                        <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">Sidebar</h5>
+                          <p class="card-text">
+                            Having this as part of the basic structure is crucial, as it will be the component that allows the users to interact with the application and access different pages such as settings or group chats. Therefore, features
+                            will be built on top of this. After discussing with the team, we have decided to only have 3 menus. Direct will allow users to access any priavte chats they may have. Group chats will allow users to access any other chats they may
+                            have with multiple people. The settings menu will allow users to access profile and notifications settings.
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
                     <!-- Chat List -->
-                    <div class="col-md-4 mb-4 d-flex flex-column">
-                      <img
-                        src="images/upload/chatlist.png"
-                        alt="Chat List Screenshot"
-                        class="img-fluid img-thumbnail mb-3"
-                      />
-                      <h4>Chat List</h4>
-                      <p>
-                       This component will allow users to access and their chats. This is another main components as further functionality will be built on top, such as accesssing specific chat messages and loading chats from API's. Using the search bar at the top
-                       users will be able to search for specific chats and filter the list accordingly. To start off, I have decided to use mock data to ensure and test that the chats are displayed appropriatelty. Later, I will be using GET requests to
-                       fetch chats from the backend.
-                      </p>
+                    <div class="col-md-4 mb-4 d-flex">
+                      <div class="card w-100 h-100">
+                        <img
+                          src="images/upload/chatlist.png"
+                          class="card-img-top img-fluid"
+                          alt="Chat List"
+                          style="height: 200px; object-fit: cover"
+                        />
+                        <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">Chat List</h5>
+                          <p class="card-text">
+                            This component will allow users to access and their chats. This is another main components as further functionality will be built on top, such as accesssing specific chat messages and loading chats from API's. Using the search bar at the top
+                            users will be able to search for specific chats and filter the list accordingly. To start off, I have decided to use mock data to ensure and test that the chats are displayed appropriatelty. Later, I will be using GET requests to
+                            fetch chats from the backend.
+                          </p>
+                        </div>
+                      </div>
                     </div>
-
+                    
                     <!-- Chat Window -->
-                    <div class="col-md-4 mb-4 d-flex flex-column">
-                      <img
-                        src="images/upload/chatwindow.png"
-                        alt="Chat Window Screenshot"
-                        class="img-fluid img-thumbnail mb-3"
-                      />
-                      <h4>Chat Window</h4>
-                      <p>
-                       This component will allow users to access their chat messages and edit their chat to add and remove people, hence being another main component, as features will be implmeneted later on. 
-                       As a start, I am using mock data for the chat messages to test and ensure they are displayed properly. This makes it easier for me to apply the css styling.
-                        
-                      </p>
+                    <div class="col-md-4 mb-4 d-flex">
+                      <div class="card w-100 h-100">
+                        <img
+                          src="images/upload/chatwindow.png"
+                          class="card-img-top img-fluid"
+                          alt="Chat Window"
+                          style="height: 200px; object-fit: cover"
+                        />
+                        <div class="card-body d-flex flex-column">
+                          <h5 class="card-title">Chat Window</h5>
+                          <p class="card-text">
+                            This component will allow users to access their chat messages and edit their chat to add and remove people, hence being another main component, as features will be implmeneted later on. 
+                            As a start, I am using mock data for the chat messages to test and ensure they are displayed properly. This makes it easier for me to apply the css styling.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -620,33 +634,47 @@
                     <li>Name the chat</li>
                     <li>Remove participants</li>
                   </ul>
-                  <img
+                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                  ><img
                         src="images/upload/updatechatmodal.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
+                  </a>
                   <p>The same modal component is used to create and update chats. In the chat list, there is a 'New Chat' button and in the chat window component there is an 'Edit' button to add or remove participants</p>
-                  <img
+                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                  ><img
                         src="images/upload/updatechatmodal2.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
-
+                  </a>
                   <h3 id="line4_2">Integrating with Backend</h3>
                   <p>As our main components have been developed, I now moved onto creating model components to define requests and responses that will be sent to the backend API endpoints.</p>
                   <p>Here is an exmple of creat chat request:</p>
-                  <img
+                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                  ><img
                         src="images/upload/chatmodelCode.png data-rel="prettyPhoto""
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
+                    </a>
                   <p>I have also defined controller components that will be sending the actual requests to to the backend endpoins. The controller then uses the model to process the data and
                   communicates this with the view components so that the data can be displayed accordingly:</p>
-                  <img
-                        src="images/upload/chatControllerCode.png data-rel="prettyPhoto""
+                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                  ><img
+                        src="images/upload/chatControllerCode.png data-rel="prettyPhoto">
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
+                  </a>
+
+                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/endpoints.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
                   
 
                   <h3 id="line4_3">Login System and Web Socket Implementation</h3>
