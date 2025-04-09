@@ -163,6 +163,7 @@
                     <li><a href="#line4_1">Inital Ideas and Components</a></li>
                     <li><a href="#line4_2">Integrating with Backend</a></li>
                     <li><a href="#line4_3">Login System and Web Socket Implementation</a></li>
+                    <li><a href="#line4_4">Testing</a></li>
                   </ul>
                 </li>
                 <li>
@@ -679,20 +680,29 @@
                     </div>
                   </div>
 
+                  <a href="images/upload/mainmenu.png" data-rel="prettyPhoto"
+                  ><img
+                        src="images/upload/mainmenu.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                        style="width: 75%; max-width: 500px; margin: 1rem auto; display: block;"
+                      />
+                  </a>
+
                   <h4>Chat Modal Implementation</h4>
                   <p>For users to be able to create chats and update them, I decided to create a modal which can update.</p>
                   <p>In the modal, users can:</p>
                   <ul>
-                    <li>Add participants to group chats</li>
-                    <li>Name the chat</li>
-                    <li>Remove participants</li>
+                    <li>• Add participants to group chats</li>
+                    <li>• Name the chat</li>
+                    <li>• Remove participants</li>
                   </ul>
                   <a href="images/upload/updatechatmodal.png" data-rel="prettyPhoto"
                   ><img
                         src="images/upload/updatechatmodal.png"
                         alt=""
                         class="img-responsive img-thumbnail"
-                        style="width: 75%; max-width: 500px; margin: 1rem auto; display: block;"
+                        style="width: 85%; max-width: 600px; margin: 1rem auto; display: block;"
                       />
                   </a>
                   <p>The same modal component is used to create and update chats. In the chat list, there is a 'New Chat' button and in the chat window component there is an 'Edit' button to add or remove participants</p>
@@ -740,14 +750,103 @@
                       const responseData = await response.json();
                   </pre>
 
+                  <p>In the view components, such as the chat modal component, we can simply call the function from chat controller to trigger the API call. Here we pass in the data when sending requests: </p>
+                  
+                  <pre class="brush: js">
+                    const handleCreateChat = async () => {
+                      if (!chatName || selectedParticipants.length === 0) return;
+                      try {
+                          const chatId = await createGroupChat("John Doe", selectedParticipants, chatName);
+                          if (onCreateChat) {
+                              onCreateChat(chatId, selectedParticipants);
+                          }
+                         
+                          setChatName("");
+                          setSelectedParticipants([]);
+                          onClose();
+                      } catch (error) {
+                          console.log("Error when creating chat:", error);
+                      }
+                  }; 
+                  </pre>
+
           
                 <h2 id="line4_3">Login System and Web Socket Implementation</h2>
                   
 
+                <h2 id="line4_4">Testing</h2>
+                  <p>
+                    For testing these components, we as a group decided to use Vitest. Vitest is fast and efficient, using Vite's build system for quick test runs. 
+                    It works well with modern tools like TypeScript and JSX. With simple APIs and built-in features like mocking,
+                    it makes testing easier and faster. 
+                  </p>
+
+                  <h3>Purpose of Testing UI Components</h3>
+                  <p>Testing UI components is important because it ensures that the user interface works as expected, providing a smooth and bug-free experience for users. It helps catch issues early, 
+                    preventing them from affecting the overall functionality or user satisfaction. 
+                    Additionally, UI testing ensures that changes or new features don’t unintentionally break existing parts of the application, maintaining consistency and reliability.</p>
+                  
+                  <h3>Component Testing</h3>
+                  <p>For testing our componets, I first drafted out all the possible scenarios I could cover int he test cases, by carefully examining each component. This helped make sure the tests provided
+                  a good overall coverage and made our components more robust</p>
+
+                  
+                  <p>Here are some of the test cases:</p>
+                  <pre class="brush: js">
+                  describe("ChatWindow component", () => {
+                      const defaultProps = {
+                          selectedChat: "Project Team",
+                          chatHeader: "Project Team",
+                          selectedParticipants: ["Alice", "Bob"]
+                      };
+                  
+                      it("renders chat header correctly", () => {
+                          render(<ChatWindow {...defaultProps} />);
+                          expect(screen.getByText("Project Team")).toBeInTheDocument();
+                      });
+                  
+                      it("renders mock messages based on selected chat", () => {
+                          render(<ChatWindow {...defaultProps} />);
+                          expect(screen.getByText("Alice: Meeting at 3 PM?")).toBeInTheDocument();
+                          expect(screen.getByText("Bob: Sounds good!")).toBeInTheDocument();
+                      });
+                  
+                      it("sends a new message and updates the UI", () => {
+                          render(<ChatWindow {...defaultProps} />);
+                          const input = screen.getByPlaceholderText("Type a message...");
+                          const sendButton = screen.getByText("Send");
+                  
+                          fireEvent.change(input, { target: { value: "Hello test!" } });
+                          fireEvent.click(sendButton);
+                  
+                          expect(screen.getByText("User: Hello test!")).toBeInTheDocument();
+                      });
+                  
+                      it("opens the update chat modal when clicking 'Edit Chat'", () => {
+                          render(<ChatWindow {...defaultProps} />);
+                          const editButton = screen.getByText("Edit Chat");
+                          fireEvent.click(editButton);
+                  
+                          expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
+                      });
+                  
+                      it("renders fallback text when no chat is selected", () => {
+                          render(<ChatWindow selectedChat={null} chatHeader={null} selectedParticipants={[]} />);
+                          expect(screen.getByText("Select a chat to start messaging")).toBeInTheDocument();
+                      });
+                  });
+                  </pre>
+                  <a href="images/upload/testPassing.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/testPassing.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
                   
               
                 </div>
-          
+
+              
               <!-- end row -->
             </section>
             <!-- end section -->
