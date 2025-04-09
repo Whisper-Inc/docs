@@ -328,17 +328,14 @@
                   <h4>Whisper Inc Organisation - Our monorepository</h4>
               
                   <h5>Whisper Core</h5>
-                  <img src="path/to/whisper-core.png" alt="Whisper Core image" />
                   <p>Whisper Core is the repository that houses the backend of our service. 
                     It handles authentication, chat logic, data storage, and API endpoints for client communication.</p>
                   
                   <h5>Whisper Client</h5>
-                  <img src="path/to/whisper-client.png" alt="Whisper Client image" />
                   <p>Whisper Client is the frontend application used by users to interact with the platform. 
                     Built with modern frameworks, it provides real-time messaging with individuals and groups, all while maintaining a modern and sleek user interface.</p>
     
                   <h5>Docs</h5>
-                  <img src="path/to/docs.png" alt="Docs image" />
                   <p>Docs is the documentation hub for Whisper Inc. 
                     It contains developer guides, API references and architecture overviews to help team members navigate the codebase.</p>
 
@@ -570,38 +567,7 @@
               </div>
               <!-- end row -->
 
-              <h4>Whisper Inc Organisation</h4>
-              
-              <h5>Whisper Core</h5>
-              <img src="path/to/whisper-core.png" alt="Whisper Core image" />
-              <p>Whisper Core is the repository that houses the backend of our service. 
-                It handles authentication, chat logic, data storage, and API endpoints for client communication.</p>
-              
-              <h5>Whisper Client</h5>
-              <img src="path/to/whisper-client.png" alt="Whisper Client image" />
-              <p>Whisper Client is the frontend application used by users to interact with the platform. 
-                Built with modern frameworks, it provides real-time messaging with individuals and groups, all while maintaining a modern and sleek user interface.</p>
-
-              <h5>Docs</h5>
-              <img src="path/to/docs.png" alt="Docs image" />
-              <p>Docs is the documentation hub for Whisper Inc. 
-                It contains developer guides, API references and architecture overviews to help team members navigate the codebase.</p>
-
-              <h4>GitHub Kanban Board</h4>
-              <p>We used a GitHub Kanban board to effectively delegate and manage tasks across our team. Each sprint was organized into clear milestones with tracked progress, ensuring alignment and accountability.</p>
-              
-              <h5>Sprint 1: Project Setup & Architecture</h5>
-              <img src="path/to/sprint1.png" alt="Sprint 1 image" />
-              <p>In Sprint 1, we focused on laying the foundation of the project. This included setting up the monorepo, CI/CD pipeline, database configuration and defining our tech stack across core and client services.</p>
-              
-              <h5>Sprint 2: Core Feature Development</h5>
-              <img src="path/to/sprint2.png" alt="Sprint 2 image" />
-              <p>During Sprint 2, we built out major features like authentication, chat creation, and message handling. The team worked across backend, frontend, and documentation to deliver functional user flows.</p>
-              
-              <h5>Sprint 3: Testing & Polishing</h5>
-              <img src="path/to/sprint3.png" alt="Sprint 3 image" />
-              <p>Sprint 3 focused on testing, bug fixes, and refining UX. We added unit and end-to-end tests to ensure the code was maintainable. We also fully completed our documentation for future reference.</p>
-
+        
 
               <hr />
               <hr />
@@ -997,7 +963,7 @@ async def login(request: models.LoginRequest):
             <h4 id="line8_1">Unit Tests</h4>
             <img src="path/to/unit-tests.png" alt="Unit tests image" />
             <p>Our project includes a robust suite of unit tests designed to ensure core logic works as expected across both backend and frontend systems. For the backend, we created focused unit tests, using pytest, around the <strong>MongoUserManager</strong> class, which handles database interactions such as user creation, chat management, and message storage. These tests mock MongoDB responses to validate logic without needing a real database connection.</p>
-            
+            <img src="path/to/unit-tests.png" alt="Unit tests image" />
             <p>On the frontend, we used <strong>TypeScript unit tests</strong> to validate UI components, input validation, and utility functions. These tests help catch logic issues early and ensure consistent rendering and behavior in the React-based Whisper Client interface.</p>
             
             <h4 id="line8_2">End-to-End Tests</h4>
@@ -1019,6 +985,8 @@ async def login(request: models.LoginRequest):
             <pre><code>npm run test</code></pre>
 
             <h5> Testing in VSCode</h5>
+              <img src="path/to/e2e-tests.png" alt="End-to-End tests image" />
+              <img src="path/to/e2e-tests.png" alt="End-to-End tests image" />
               <p> VSCode (and potentially other IDEs allow you to seamlessly run all your tests. Use the 'Testing' button to run all the tests, like the example below.</p>
             
             <p>Make sure you have all necessary dependencies installed and any required services (like MongoDB) running if applicable. Running the full suite regularly helps catch regressions early and ensures all features continue to work as expected.</p>
