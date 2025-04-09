@@ -555,14 +555,15 @@
               <!-- end row -->
 
                 <div class="col-md-12">
-                  <h3 id="line4_1">Initial Ideas and Components</h3>
+                  <h2 id="line4_1" class=font>Initial Ideas and Components</h2>
                   <p>
                     As dicussed previously, for the user interface we as a group have decided to use React Js with NextJs and Typescript. For styling, we have decided to use TailwindCSS. I have taken the role to be the main frontend developer in the group.
                     To start off, I looked at the designs ad user intefaces for other messaging service applications such as Mircrosoft Teams. With this, I was able to decide on the main components that I would need to create
                     for a foundational structure that can be built on.
                   </p>
+                  
                   <h4>Components for Basic Structure</h4>
-                  <p>As we are following MVC, these are our view components</p>
+                  <p>As we are following MVC, these are our main view components</p>
 
                   <div class="row d-flex align-items-stretch text-center">
                   
@@ -630,7 +631,7 @@
                   <p>For users to be able to create chats and update them, I decided to create a modal which can update.</p>
                   <p>In the modal, users can:</p>
                   <ul>
-                    <li>Add participants to group chats)</li>
+                    <li>Add participants to group chats</li>
                     <li>Name the chat</li>
                     <li>Remove participants</li>
                   </ul>
@@ -649,35 +650,29 @@
                         class="img-responsive img-thumbnail"
                       />
                   </a>
-                  <h3 id="line4_2">Integrating with Backend</h3>
+                  
+                  <h2 id="line4_2">Integrating with Backend</h2>
                   <p>As our main components have been developed, I now moved onto creating model components to define requests and responses that will be sent to the backend API endpoints.</p>
-                  <p>Here is an exmple of creat chat request:</p>
-                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
-                  ><img
-                        src="images/upload/chatmodelCode.png data-rel="prettyPhoto""
+                  <p>Here is an exmple of create chat request:</p>
+                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto">
+                    <img
+                        src="images/upload/chatmodelCode.png"
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
-                    </a>
+                  </a>
                   <p>I have also defined controller components that will be sending the actual requests to to the backend endpoins. The controller then uses the model to process the data and
                   communicates this with the view components so that the data can be displayed accordingly:</p>
                   <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
                   ><img
-                        src="images/upload/chatControllerCode.png data-rel="prettyPhoto">
+                        src="images/upload/chatControllerCode.png">
                         alt=""
                         class="img-responsive img-thumbnail"
                       />
                   </a>
 
-                  <a href="images/upload/endpoints.png" data-rel="prettyPhoto"
-                ><img
-                  src="images/upload/endpoints.png"
-                  alt=""
-                  class="img-responsive img-thumbnail"
-              /></a>
-                  
-
-                  <h3 id="line4_3">Login System and Web Socket Implementation</h3>
+          
+                <h2 id="line4_3">Login System and Web Socket Implementation</h2>
                   
 
                   
