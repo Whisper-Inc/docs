@@ -137,16 +137,18 @@
               role="navigation"
             >
               <ul class="nav">
-                <li><a href="#line1">Analysis</a></li>
                 <li>
-                  <a href="#line2">Choosing Technologies</a>
+                  <a href="#line-1">Introduction</a>
+                </li>
+                <li>
+                  <a href="#line0">Team & Decisions</a>
                   <ul class="nav">
-                    <li><a href="#line2_1">Frontend</a></li>
-                    <li><a href="#line2_2">Server</a></li>
-                    <li><a href="#line2_3">Database</a></li>
-                    <li><a href="#line2_4">Deployment</a></li>
+                    <li><a href="#line0_1">Role Definition</a></li>
+                    <li><a href="#line0_2">Collaboration & Leadership</a></li>
+                    <li><a href="#line0_3">Design Choices</a></li>
                   </ul>
                 </li>
+                <li><a href="#line1">Analysis</a></li>
                 <li>
                   <a href="#line3">Project Setup</a>
                   <ul class="nav">
@@ -199,7 +201,7 @@
             <section class="welcome">
               <div class="row">
                 <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
+                  <h2 class="dark-text" id="line-1">
                     Introduction
                     <hr />
                   </h2>
@@ -252,6 +254,26 @@
                 </div>
               </div>
             </section>
+
+            <section id="line0" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    Team and Decisions
+                    <p>Jamie Wells</p>
+                    <hr />
+                  </h2>
+                  <h4 id="line0_1">Role Definition</h4>
+                  <p>Placeholder</p>
+                  <h4 id="line0_2">Collaboration & Leadership</h4>
+                  <p>Placeholder</p>
+                  <h4 id="line0_3">Design Choices</h4>
+                  <p>Placeholder</p>
+                </div>
+                <!-- end col -->
+              </div>
+            </section>
+            <!-- end section -->
 
             <section id="line1" class="section">
               <div class="row">
@@ -606,7 +628,7 @@
               <div class="row">
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
-                    Initial Endpoints
+                    UI Development
                     <hr />
                   </h2>
                 </div>
@@ -764,7 +786,66 @@ mongosh "mongodb+srv://{username}:{password}@whispercluster.e03b9.mongodb.net/de
                 us to propogate our requests externally.
               </p>
               <h4 id="line6_2">UserManager</h4>
-              <p>placeholder</p>
+              <p>
+                The MongoUserManager class is where the PyMongo helper methods
+                are defined. When the server starts up, only one instance of
+                MongoUserManager will be created (when the app settings are
+                defined), which is much more memory efficient than creating a
+                new object for each incoming request.
+              </p>
+              <p>
+                These requests are then handled by the endpoints defined, and
+                use the helper functions to receive outputs on the request data,
+                where the request data is parsed in as arguments.
+              </p>
+              <p>
+                Below is an example of how our register user endpoint uses the
+                register user method in MongoUserManager to execute the
+                necessary database operations:
+              </p>
+              <pre class="brush: python">
+@app.post("/register")
+async def register(request: models.RegisterRequest):
+    try:
+        # Validate input
+        if not request.username or not request.password:
+            raise HTTPException(
+                status_code=400, detail="Username and password are required"
+            )
+
+        # attempting to register user
+        response = config.user_manager.register_user(request.username, request.password)
+        if response:
+            config.logger.info("User registered successfully")
+            return {"message": "User registered successfully"}
+        (...)
+              </pre>
+              <p>
+                This method will get the user details from the request and use
+                the register_user method in the MongoUserManager class to
+                execute the database logic and return the result. This
+                particular method returns a boolean, indicating whether the user
+                registration was successful or not:
+              </p>
+              <pre class="brush: python">
+def register_user(self, username: str, password: str) -> bool:
+    user_exists = self.users_collection.find_one({"username": username})
+
+    if user_exists:
+        return False
+
+    hashed_password = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+
+    user_document = {
+        "username": username,
+        "password": hashed_password,
+        "created_at": time.time(),
+    }
+    self.users_collection.insert_one(user_document)
+    self.config.logger.info("\nUser added to DB")
+    return True
+              </pre>
+              <br />
               <h4 id="line6_3">Endpoints</h4>
               <p>
                 The pymongo API logic had now been written, and the next step
