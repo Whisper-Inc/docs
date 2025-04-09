@@ -158,9 +158,9 @@
                 <li>
                   <a href="#line4">UI Development</a>
                   <ul class="nav">
-                    <li><a href="#line4_1">Mockups</a></li>
-                    <li><a href="#line4_2">Testing</a></li>
-                    <li><a href="#line4_3">Placeholder??</a></li>
+                    <li><a href="#line4_1">Inital Ideas and Components</a></li>
+                    <li><a href="#line4_2">Integrating with Backend</a></li>
+                    <li><a href="#line4_3">Login System and Web Socket Implementation</a></li>
                   </ul>
                 </li>
                 <li>
@@ -476,72 +476,105 @@
               </div>
               <!-- end row -->
 
-              <div class="row">
-                <div class="col-md-4">
-                  <img
-                    src="images/upload/plugin1.png"
-                    alt=""
-                    class="img-responsive img-thumbnail"
-                  />
-                  <h4>Plugin name #1</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <img
-                    src="images/upload/plugin2.png"
-                    alt=""
-                    class="img-responsive img-thumbnail"
-                  />
-                  <h4>Plugin name #2</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                </div>
-                <!-- end col -->
-
-                <div class="col-md-4">
-                  <img
-                    src="images/upload/plugin3.png"
-                    alt=""
-                    class="img-responsive img-thumbnail"
-                  />
-                  <h4>Plugin name #3</h4>
-                  <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted.. Please read more about WordPress here.
-                  </p>
-                </div>
-                <!-- end col -->
-
                 <div class="col-md-12">
+                  <h3 id="#line4_1">Initial Ideas and Components</h3>
                   <p>
-                    Lorem the It is a long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. long established fact that a reader will
-                    be distracted by the readable content of a page when looking
-                    at its layout. The point of using Lorem Ipsum is that it has
-                    a more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English.
+                    As dicussed previously, for the user interface we as a group have decided to use React Js with NextJs and Typescript. For styling, we have decided to use TailwindCSS. I have taken the role to be the main frontend developer in the group.
+                    To start off, I looked at the designs ad user intefaces for other messaging service applications such as Mircrosoft Teams. With this, I was able to decide on the main components that I would need to create
+                    for a foundational structure that can be built on.
                   </p>
+                  <h4>Components for Basic Structure</h4>
+                  <p>As we are following MVC, these are our view components</p>
+                  
+                    <div class="col-md-4">
+                      <img
+                        src="images/upload/sidebar.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+              
+                      <h5>Sidebar</h5>
+                      <p>
+                       Having this as part of the basic structure is crucial, as it will be the component that allows the users to interact with the application and access different pages such as settings or group chats. Therefore, features
+                       will be built on top of this. After discussing with the team, we have decided to only have 3 menus. Direct will allow users to access any priavte chats they may have. Group chats will allow users to access any other chats they may
+                       have with multiple people. The settings menu will allow users to access profile and notifications settings.
+                      </p>
+                    </div>
 
-                  <div class="text-center">
-                    <a href="#" class="btn btn-primary"
-                      >Get a Installation Service</a
-                    >
-                    <a href="#" class="btn btn-info">Ask a Question</a>
-                  </div>
+                    <div class="col-md-4">
+                      <img
+                        src="images/upload/chatlist.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+                    
+                      <h5>Chat List</h5>
+                      <p>
+                       This component will allow users to access and their chats. This is another main components as further functionality will be built on top, such as accesssing specific chat messages and loading chats from API's. Using the search bar at the top
+                       users will be able to search for specific chats and filter the list accordingly. To start off, I have decided to use mock data to ensure and test that the chats are displayed appropriatelty. Later, I will be using GET requests to
+                       fetch chats from the backend.
+                      </p>
+                    </div>
+
+                    <div class="col-md-4">
+                      <img
+                        src="images/upload/chatwindow.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+                    
+                      <h5>Chat Window</h5>
+                      <p>
+                       This component will allow users to access their chat messages and edit their chat to add and remove people, hence being another main component, as features will be implmeneted later on. 
+                       As a start, I am using mock data for the chat messages to test and ensure they are displayed properly. This makes it easier for me to apply the css styling.
+                        
+                      </p>
+                    </div>
+
+                  <h4>Chat Modal Implementation</h4>
+                  <p>For users to be able to create chats and update them, I decided to create a modal which can update.</p>
+                  <p>In the modal, users can:</p>
+                  <ul>
+                    <li>Add participants to group chats)</li>
+                    <li>Name the chat</li>
+                    <li>Remove participants</li>
+                  </ul>
+                  <img
+                        src="images/upload/updatechatmodal.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+                  <p>The same modal component is used to create and update chats. In the chat list, there is a 'New Chat' button and in the chat window component there is an 'Edit' button to add or remove participants</p>
+                  <img
+                        src="images/upload/updatechatmodal2.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+
+                  <h3 id="#line4_2">Integrating with Backend</h3>
+                  <p>As our main components have been developed, I now moved onto creating model components to define requests and responses that will be sent to the backend API endpoints.</p>
+                  <p>Here is an exmple of creat chat request:</p>
+                  <img
+                        src="images/upload/chatmodelCode.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+                  <p>I have also defined controller components that will be sending the actual requests to to the backend endpoins. The controller then uses the model to process the data and
+                  communicates this with the view components so that the data can be displayed accordingly:</p>
+                  <img
+                        src="images/upload/chatControllerCode.png"
+                        alt=""
+                        class="img-responsive img-thumbnail"
+                      />
+                  
+
+                  <h3 id="#line4_3">Login System and Web Socket Implementation</h3>
+                  
+
+                  
+              
                 </div>
-              </div>
+          
               <!-- end row -->
             </section>
             <!-- end section -->
