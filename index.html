@@ -1163,10 +1163,10 @@
             </section>
             <!-- end section -->
 
-            <section id="line6" class="section">
+            <section class="section">
               <div class="row">
                 <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
+                  <h2 id="line6" class="dark-text">
                     Database
                     <p>Jamie Wells</p>
                     <hr />
@@ -2023,8 +2023,25 @@ CMD ["nginx", "-g", "daemon off;"]
 
                 <!-- end col -->
               </div>
-              <h4 id="line7_1">Placeholder</h4>
-              <p>Placeholder</p>
+              <h4 id="line7_1">GitHub Actions</h4>
+              <p>
+                Although we haven't quite finished our deployment process yet,
+                we have clearly defined tasks that need to be complete before
+                the newly-built image is pushed to Amazon ECR.
+              </p>
+              <a href="images/upload/github-actions.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/github-actions.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                Our GitHub actions pipeline is configured to run the initial
+                tests that we've layed out using Pytest, and then if those tests
+                pass, the pipeline will log into AWS using an automated IAM
+                role, push our image to ECR, and finally deploy our containers
+                on ECS.
+              </p>
             </section>
             <!-- end section -->
           </div>
