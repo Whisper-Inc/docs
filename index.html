@@ -728,7 +728,7 @@
             
 
               <div class="col-md-12">
-                <h2 id="line4_1" class="font">Initial Ideas and Components</h2>
+                <h1 id="line4_1" class="font"><Strong>Initial Ideas and Components</Strong></h2>
                 <p>
                   As dicussed previously, for the user interface we as a group
                   have decided to use React Js with NextJs and Typescript. For
@@ -741,7 +741,7 @@
                   on.
                 </p>
 
-                <h4>Components for Basic Structure</h4>
+                <h2>Components for Basic Structure</h4>
                 <p>
                   As we are following MVC, these are our main view components
                 </p>
@@ -757,7 +757,7 @@
                         style="height: 200px; object-fit: cover"
                       />
                       <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Sidebar</h5>
+                        <h3 class="card-title">Sidebar</h3>
                         <p class="card-text">
                           Having this as part of the basic structure is crucial,
                           as it will be the component that allows the users to
@@ -785,7 +785,7 @@
                         style="height: 200px; object-fit: cover"
                       />
                       <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Chat List</h5>
+                        <h3 class="card-title">Chat List</h3>
                         <p class="card-text">
                           This component will allow users to access and their
                           chats. This is another main components as further
@@ -812,7 +812,7 @@
                         style="height: 200px; object-fit: cover"
                       />
                       <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Chat Window</h5>
+                        <h3 class="card-title">Chat Window</h3>
                         <p class="card-text">
                           This component will allow users to access their chat
                           messages and edit their chat to add and remove people,
@@ -841,7 +841,7 @@
                   />
                 </a>
 
-                <h4>Chat Modal Implementation</h4>
+                <h2>Chat Modal Implementation</h2>
                 <p>
                   For users to be able to create chats and update them, I
                   decided to create a modal which can update.
@@ -889,7 +889,7 @@
                   />
                 </a>
 
-                <h2 id="line4_2">Integrating with Backend</h2>
+                <h2 id="line4_2"><strong>Integrating with Backend</strong></h2>
                 <p>
                   As our main components have been developed, I now moved onto
                   creating model components to define requests and responses
@@ -961,10 +961,45 @@
                   </pre
                 >
 
-                <h2 id="line4_3">Login System and Web Socket Implementation</h2>
-                <p>Hysams Sections</p>
+                <h2 id="line4_3"><strong>Login System and Web Socket Implementation</strong></h2>
+                <p>To build the login system, we first setup a user interface by building components. So we first setup a login and register page. The backend endpoints for login and register 
+                were being built in parallel, which allowed us to clearly communicate our ideas and issues during development.</p>
+                
 
-                <h2 id="line4_4">Testing</h2>
+                <p>For Registering: </p>
+                <a href="images/upload/registering.png" data-rel="prettyPhoto"
+                  ><img
+                    src="images/upload/registering.png"
+                    alt=""
+                    class="img-responsive img-thumbnail"
+                    style="
+                      width: 75%;
+                      max-width: 500px;
+                      margin: 1rem auto;
+                      display: block;
+                    "
+                /></a>
+
+                <p>For registering, we have added a restriction on the password to be a minimum of 8 characters long. This means they are more secure, as they would statistcially be harder to guess.</p>
+
+
+                <p>For Logging in: </p>
+                <a href="images/upload/login.png" data-rel="prettyPhoto"
+                  ><img
+                    src="images/upload/login.png"
+                    alt=""
+                    class="img-responsive img-thumbnail"
+                    style="
+                      width: 75%;
+                      max-width: 500px;
+                      margin: 1rem auto;
+                      display: block;
+                    "
+                /></a>
+
+                <p>Once users login, they will be taken to the main menu, ready to send messages. The token is cached, so if the user refreshes the page, they will not be asked to log back in.</p>
+
+                <h2 id="line4_4"><strong>Testing</strong></h2>
                 <p>
                   For testing these components, we as a group decided to use
                   Vitest. Vitest is fast and efficient, using Vite's build
