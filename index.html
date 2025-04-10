@@ -160,7 +160,6 @@
                     <li>
                       <a href="#line4_3">Login and Web Sockets</a>
                     </li>
-                    <li><a href="#line4_4">Testing</a></li>
                   </ul>
                 </li>
                 <li>
@@ -210,8 +209,8 @@
                         <ul>
                           <li>
                             <strong>Authors : </strong>
-                            Jamie Wells, Syed Abbas, Mahbubur (Hysam) Rahman,
-                            Samuel Gagatek
+                            Jamie Wells, Syed Abbas, Mahbubur Rahman, Samuel
+                            Gagatek
                           </li>
                           <li>
                             <strong>License : </strong>
@@ -247,7 +246,7 @@
                     <p>Samuel Gagatek</p>
                     <hr />
                   </h2>
-                  <h4 id="line0_1">Role Definitions</h4>
+                  <h3 id="line0_1">Role Definitions</h3>
 
                   <h4>Jamie Wells: Project Lead</h4>
                   <p>
@@ -279,7 +278,7 @@
                   <p>
                     Samuel worked mainly on backend logic and was instrumental
                     in implementing and running automated tests. This ensured
-                    the stability of the codebase through unit and end-to-end
+                    the stability of the codebase through unit and integration
                     testing.
                   </p>
 
@@ -316,7 +315,7 @@
                     During Sprint 2, we built out major features like
                     authentication, chat creation, and message handling. The
                     team worked across backend, frontend, and we added unit and
-                    end-to-end tests to ensure the code was maintainable.
+                    integration tests to ensure the code was maintainable.
                   </p>
 
                   <h5>Sprint 3: Documentation & Polishing</h5>
@@ -677,25 +676,18 @@
                     send requests and updates the view accordingly.
                   </p>
 
-                  <strong>Backend Mircoservice (MVC)</strong>
+                  <strong>Backend Mircoservice (Model & Controller)</strong>
                   <p>
                     Model: Contains the business logic and data structure, such
-                    as user authentication, message storage, and group chat
-                    management. It manages interactions with the database.
-                  </p>
-                  <p>
-                    View: The API responses that the frontend receives from the
-                    backend. These views are not directly presented to the user
-                    but are the data structures (like JSON) that are returned to
-                    the frontend for rendering.
+                    as user group chat management. It also manages interactions
+                    with the database.
                   </p>
                   <p>
                     Controller: The API controllers that handle incoming
                     requests from the frontend, such as creating accounts,
                     sending messages, or updating group chats. The controller
                     processes requests, interacts with the model (business
-                    logic), and returns the necessary data (view) to the
-                    frontend.
+                    logic), and returns the necessary data to the frontend.
                   </p>
 
                   <strong>Database</strong>
@@ -715,111 +707,6 @@
             </section>
             <!-- end section -->
 
-            <section id="line2" class="section">
-              <div class="row">
-                <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
-                    Choosing Technologies
-                    <p>Mahbubur Rahman</p>
-                    <hr />
-                  </h2>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <div class="intro2 clearfix">
-                <p>
-                  <i class="fa fa-wordpress"></i> Lorem the It is a long
-                  established fact that a reader will be distracted.. <br />
-                  Please read more about WordPress here.
-                  <a href="#">WordPress Installation via FTP.</a>
-                </p>
-              </div>
-
-              <hr />
-
-              <h4>Upload via WordPress Admin</h4>
-
-              <p>
-                Lorem the It is a long established fact that a reader will be
-                distracted by the readable content of a page when looking at its
-                layout. The point of using Lorem Ipsum is that it has a
-                more-or-less normal distribution of letters, as opposed to using
-                'Content here, content here', making it look like readable
-                English.
-              </p>
-
-              <a href="#" class="btn btn-primary">Get a Installation Service</a>
-              <a href="#" class="btn btn-info">Ask a Question</a>
-              <hr />
-              <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="media">
-                    <iframe
-                      width="560"
-                      height="315"
-                      src="https://www.youtube.com/embed/snFzbPm_RUE"
-                      frameborder="0"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- end section -->
-
-            <section id="line3" class="section">
-              <div class="row">
-                <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
-                    Project Setup
-                    <hr />
-                  </h2>
-                  <p>
-                    In order to make it simple to run locally, we have
-                    abstracted the initial setup logic by creating a Dockerfile
-                    for running our application on Docker.
-                  </p>
-                  <a href="images/upload/dockerfile.png" data-rel="prettyPhoto"
-                    ><img
-                      src="images/upload/dockerfile.png"
-                      alt=""
-                      class="img-responsive img-thumbnail"
-                      style="
-                        width: 75%;
-                        max-width: 500px;
-                        margin: 1rem auto;
-                        display: block;
-                      "
-                    />
-                  </a>
-                  <p>
-                    With this implemented, you can simply run the following two
-                    commands to spin up a local instance of the service:
-                  </p>
-                  <pre class="brush: bash">
-                    docker compose build
-                  </pre>
-                  <pre class="brush: bash">
-                    docker compose up
-                  </pre>
-                  <p>
-                    This will bring up two containers; one for the FastAPI
-                    application, and one for the MongoDB instance connection.
-                  </p>
-                  <p>
-                    This is a much better alternative to using a Python virtual
-                    environment, as this would require manually installing
-                    dependencies after each clone/fork, and by containerising
-                    the application, we can easily deploy it in other locations.
-                  </p>
-                </div>
-                <!-- end col -->
-              </div>
-            </section>
-            <!-- end section -->
-
             <section id="line4" class="section">
               <div class="row">
                 <div class="col-md-12 left-align">
@@ -831,7 +718,6 @@
                 </div>
                 <!-- end col -->
               </div>
-              <!-- end row -->
 
               <div class="col-md-12">
                 <h2 id="line4_1" class="font">Initial Components</h2>
@@ -863,7 +749,7 @@
                         style="height: 200px; object-fit: cover"
                       />
                       <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Sidebar</h5>
+                        <h3 class="card-title">Sidebar</h3>
                         <p class="card-text">
                           Having this as part of the basic structure is crucial,
                           as it will be the component that allows the users to
@@ -891,7 +777,7 @@
                         style="height: 200px; object-fit: cover"
                       />
                       <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Chat List</h5>
+                        <h3 class="card-title">Chat List</h3>
                         <p class="card-text">
                           This component will allow users to access and their
                           chats. This is another main components as further
@@ -918,7 +804,7 @@
                         style="height: 200px; object-fit: cover"
                       />
                       <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Chat Window</h5>
+                        <h3 class="card-title">Chat Window</h3>
                         <p class="card-text">
                           This component will allow users to access their chat
                           messages and edit their chat to add and remove people,
@@ -1147,7 +1033,7 @@
                   </pre>
                 <a href="images/upload/testPassing.png" data-rel="prettyPhoto"
                   ><img
-                    src="images/upload/testPassing.png"
+                    src="images/upload/registering.png"
                     alt=""
                     class="img-responsive img-thumbnail"
                     style="
@@ -1157,6 +1043,32 @@
                       display: block;
                     "
                 /></a>
+
+                <p>
+                  For registering, we have added a restriction on the password
+                  to be a minimum of 8 characters long. This means they are more
+                  secure, as they would statistcially be harder to guess.
+                </p>
+
+                <p>For Logging in:</p>
+                <a href="images/upload/login.png" data-rel="prettyPhoto"
+                  ><img
+                    src="images/upload/login.png"
+                    alt=""
+                    class="img-responsive img-thumbnail"
+                    style="
+                      width: 75%;
+                      max-width: 500px;
+                      margin: 1rem auto;
+                      display: block;
+                    "
+                /></a>
+
+                <p>
+                  Once users login, they will be taken to the main menu, ready
+                  to send messages. The token is cached, so if the user
+                  refreshes the page, they will not be asked to log back in.
+                </p>
               </div>
 
               <!-- end row -->
@@ -1308,6 +1220,33 @@ async def login(request: models.LoginRequest):
               /></a>
               <br />
               <br />
+              <h4 id="line6_4">Testing</h4>
+              <p>
+                Now that the database had been set up and the request handlers
+                for communicating to the database had been committed, it was
+                time to start sending test requests to these endpoints.
+              </p>
+              <p>
+                In order to this, we had two options. We could run copy and
+                paste the localhost URL into the browser and add the endpoint we
+                wanted to hit onto the end, but this wouldn't work for any
+                request that required a request body or request header. To solve
+                this, we used Postman, where we could customise the request
+                type, body, and headers.
+              </p>
+              <a href="images/upload/postman.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/postman.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                By being able to add custom headers to each request, this would
+                allow us to authenticate necessary requests with a custom
+                Whisper API key so that users couldn't make unauthenticated
+                requets. For our automated tests, please see
+                <a href="#line8">Writing Tests</a>.
+              </p>
             </section>
             <!-- end section -->
 
@@ -1413,6 +1352,23 @@ async def login(request: models.LoginRequest):
                   <a href="images/upload/fullstack2.png" data-rel="prettyPhoto">
                     <img
                       src="images/upload/fullstack2.png"
+                      alt="WebSocket in Client Architecture"
+                      class="img-responsive img-thumbnail"
+                    />
+                  </a>
+                  <div style="margin: 1rem 0">
+                    <p>
+                      The WebSocket server is implemented in the whisper-client
+                      service, allowing it to handle real-time message delivery
+                      directly. This architecture enables the client to manage
+                      WebSocket connections and broadcast messages to
+                      participants in a chat.
+                    </p>
+                  </div>
+
+                  <a href="images/upload/webby.png" data-rel="prettyPhoto">
+                    <img
+                      src="images/upload/webby.png"
                       alt="WebSocket in Client Architecture"
                       class="img-responsive img-thumbnail"
                     />
@@ -1620,6 +1576,349 @@ async def login(request: models.LoginRequest):
                   </div>
                 </div>
               </div>
+              <section id="line12" class="section">
+                <div class="row">
+                  <div class="col-md-12 left-align">
+                    <h2 class="dark-text">
+                      Authentication
+                      <p>Mahbubur Rahman</p>
+                      <hr />
+                    </h2>
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>JWT Authentication Implementation</h4>
+                    <p>
+                      Whisper uses JSON Web Tokens (JWT) for secure
+                      authentication between the frontend and backend services.
+                      This stateless authentication method allows us to maintain
+                      secure sessions without storing session data on the
+                      server, which aligns with our microservices architecture
+                      and scalability goals.
+                    </p>
+
+                    <h4>How JWT Authentication Works in Whisper</h4>
+                    <p>
+                      When a user logs in or registers, our backend generates a
+                      signed JWT that contains encoded user information. This
+                      token is then stored in the client's cookies and used for
+                      subsequent API requests to authenticate the user.
+                    </p>
+
+                    <div class="mermaid">
+                      sequenceDiagram participant User participant Frontend
+                      participant Backend participant Database User->>Frontend:
+                      Enter credentials Frontend->>Backend: POST /login with
+                      username & password Backend->>Database: Validate
+                      credentials Database-->>Backend: Credentials valid
+                      Backend->>Backend: Generate JWT with payload & secret key
+                      Backend-->>Frontend: Return JWT token Frontend->>Frontend:
+                      Store JWT in cookies Frontend-->>User: Redirect to
+                      dashboard Note over User,Database: Subsequent
+                      Authenticated Requests User->>Frontend: Access protected
+                      resource Frontend->>Backend: Request with JWT in header
+                      Backend->>Backend: Verify JWT signature Backend->>Backend:
+                      Decode & validate claims Backend-->>Frontend: Return
+                      protected resource Frontend-->>User: Display protected
+                      resource
+                    </div>
+
+                    <h4>JWT Token Structure</h4>
+                    <p>Our JWT tokens consist of three parts:</p>
+                    <ol>
+                      <li>
+                        <strong>Header</strong>: Contains the token type and
+                        signing algorithm
+                      </li>
+                      <li>
+                        <strong>Payload</strong>: Contains user data and
+                        metadata (expiration, issuer, etc.)
+                      </li>
+                      <li>
+                        <strong>Signature</strong>: Ensures the token hasn't
+                        been tampered with
+                      </li>
+                    </ol>
+
+                    <div class="mermaid">
+                      graph TD A[JWT Token] --> B[Header] A --> C[Payload] A -->
+                      D[Signature] B --> B1[Algorithm: HS256] B --> B2[Type:
+                      JWT] C --> C1[User ID] C --> C2[Username] C -->
+                      C3[Expiration time] C --> C4[Issued at] D --> D1[Signed
+                      with SECRET_KEY] D --> D2[Prevents tampering]
+                    </div>
+
+                    <h4>Frontend Authentication Implementation</h4>
+                    <h5>Login Process</h5>
+                    <p>
+                      The frontend handles user authentication through API
+                      requests to the backend. When a user submits their
+                      credentials, the frontend sends a request to the login
+                      endpoint, and upon successful authentication, stores the
+                      JWT token in cookies for future requests.
+                    </p>
+
+                    <pre class="brush: js">
+              // Login Request Implementation
+              export const LoginRequest = (
+                username: string,
+                password: string
+              ): Promise{LoginRegisterResponse} => {
+                return fetch(`${process.env.NEXT_PUBLIC_API_URL}login`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ username, password }),
+                })
+                  .then(async (res) => {
+                    const data = await res.json();
+                    if (res.ok) {
+                      // Store the JWT token in cookies with secure settings
+                      Cookies.set("token", data.token, { 
+                        sameSite: "Strict", 
+                        secure: true,
+                        expires: 1 // 1 day expiration to match token lifetime
+                      });
+                      localStorage.setItem("username", username);
+                      return { status: "SUCCESS", msg: null } as const;
+                    } else {
+                      return { status: "FAILURE", msg: data.detail || "Unknown error" } as const;
+                    }
+                  })
+                  .catch((err) => {
+                    return { status: "FAILURE", msg: err as string } as const;
+                  });
+              };
+              
+              // Function to add JWT token to API requests
+              export const authenticatedFetch = (url: string, options: RequestInit = {}): Promise{Response} => {
+                const token = Cookies.get("token");
+                
+                if (!token) {
+                  throw new Error("No authentication token found");
+                }
+                
+                // Add Authorization header with JWT token
+                const headers = {
+                  ...options.headers,
+                  "Authorization": `Bearer ${token}`
+                };
+                
+                return fetch(url, { ...options, headers });
+              };
+                    </pre>
+
+                    <h5>Registration Process</h5>
+                    <p>
+                      Similarly, the registration process sends user credentials
+                      to the backend's register endpoint. Upon successful
+                      registration, the user is redirected to the login page to
+                      authenticate with their new credentials.
+                    </p>
+
+                    <h4>Backend Authentication Implementation</h4>
+                    <h5>JWT Token Generation</h5>
+                    <p>
+                      In the backend, when a user successfully authenticates, we
+                      generate a JWT token using a secure secret key and set an
+                      appropriate expiration time.
+                    </p>
+
+                    <pre class="brush: python">
+              # JWT Token Generation in whisper-core
+              def generate_token(self, username: str) -> str:
+                  """Generate a JWT token for authenticated users."""
+                  # Set expiration to 24 hours from now
+                  expiration = datetime.datetime.utcnow() + datetime.timedelta(hours=24)
+                  
+                  # Create the JWT payload
+                  payload = {
+                      "sub": username,       # Subject (user identifier)
+                      "exp": expiration,     # Expiration time
+                      "iat": datetime.datetime.utcnow(),  # Issued at
+                      "iss": "whisper-core"  # Issuer
+                  }
+                  
+                  # Sign the token with our secret key using HS256 algorithm
+                  token = jwt.encode(payload, self.config.secret_key, algorithm="HS256")
+                  return token
+                    </pre>
+
+                    <h5>Token Validation</h5>
+                    <p>
+                      For protected endpoints, we verify the token's
+                      authenticity by checking its signature and validating its
+                      claims.
+                    </p>
+
+                    <pre class="brush: python">
+              # JWT Token Validation Middleware in whisper-core
+              async def verify_token(request: Request):
+                  """Middleware to validate JWT tokens from incoming requests."""
+                  # Get the token from Authorization header
+                  token = request.headers.get("Authorization")
+                  if not token:
+                      raise HTTPException(status_code=401, detail="Token missing")
+                  
+                  try:
+                      # Remove 'Bearer ' prefix if present
+                      if token.startswith("Bearer "):
+                          token = token[7:]
+                      
+                      # Verify and decode the token
+                      payload = jwt.decode(
+                          token, 
+                          config.secret_key, 
+                          algorithms=["HS256"],
+                          options={"verify_signature": True, "verify_exp": True}
+                      )
+                      
+                      # Extract username from the token subject claim
+                      username = payload.get("sub")
+                      if not username:
+                          raise HTTPException(status_code=401, detail="Invalid token")
+                      
+                      # Check if user still exists in database (optional)
+                      user = config.user_manager.get_user(username)
+                      if not user:
+                          raise HTTPException(status_code=401, detail="User not found")
+                          
+                      return username
+                  except jwt.ExpiredSignatureError:
+                      raise HTTPException(status_code=401, detail="Token expired")
+                  except jwt.InvalidTokenError:
+                      raise HTTPException(status_code=401, detail="Invalid token")
+                    </pre>
+
+                    <h4>Microservices Authentication Architecture</h4>
+                    <p>
+                      Our microservice architecture implements JWT
+                      authentication across the whisper-client and whisper-core
+                      services, creating a secure, stateless system that can
+                      scale horizontally.
+                    </p>
+
+                    <div class="mermaid">
+                      graph TB subgraph "Whisper-Client" UI[User Interface]
+                      WSC[WebSocket Client] AC[Auth Controller] CC[Chat
+                      Controller] AMW[Auth Middleware] end subgraph
+                      "Whisper-Core" AP[Auth API] CP[Chat API] DB[(MongoDB)]
+                      JWTV[JWT Validator] end User((User)) -- "1. Login
+                      credentials" --> UI UI -- "2. POST /login" --> AC AC --
+                      "3. Authenticate" --> AP AP -- "4. Validate credentials"
+                      --> DB DB -- "5. User exists" --> AP AP -- "6. Generate
+                      JWT" --> AP AP -- "7. Return JWT" --> AC AC -- "8. Store
+                      JWT in cookies" --> AC AC -- "9. Return success" --> UI UI
+                      -- "10. Request protected resource" --> CC CC -- "11.
+                      Request with JWT token" --> AMW AMW -- "12. Add
+                      Authorization header" --> CP CP -- "13. Validate JWT" -->
+                      JWTV JWTV -- "14. Token valid" --> CP CP -- "15. Query
+                      data" --> DB DB -- "16. Return data" --> CP CP -- "17.
+                      Return protected resource" --> CC CC -- "18. Update UI"
+                      --> UI User -- "19. Real-time updates" --> WSC WSC -- "20.
+                      Connect with JWT" --> WSC WSC -- "21. Two-way
+                      communication" .-> CP classDef client
+                      fill:#d9f0ff,stroke:#0066cc; classDef core
+                      fill:#ffe6cc,stroke:#ff6600; classDef user
+                      fill:#e6ffe6,stroke:#009900; class UI,WSC,AC,CC,AMW
+                      client; class AP,CP,DB,JWTV core; class User user;
+                    </div>
+
+                    <h5>Authentication Flow Between Services</h5>
+                    <p>
+                      As shown in the diagram above, the JWT token is used to
+                      establish trust between services:
+                    </p>
+                    <ol>
+                      <li>
+                        The user authenticates with whisper-client through the
+                        login endpoint
+                      </li>
+                      <li>
+                        Whisper-client forwards credentials to whisper-core's
+                        authentication API
+                      </li>
+                      <li>
+                        Whisper-core validates credentials and generates a JWT
+                        token
+                      </li>
+                      <li>
+                        The token is stored securely in whisper-client and used
+                        for all subsequent API requests
+                      </li>
+                      <li>
+                        Whisper-client includes the JWT in all requests to
+                        protected endpoints
+                      </li>
+                      <li>
+                        Whisper-core validates the JWT signature and claims
+                        before processing the request
+                      </li>
+                      <li>
+                        WebSocket connections are also authenticated using the
+                        same JWT token
+                      </li>
+                    </ol>
+                    <p>
+                      This architecture ensures that each service has clear
+                      responsibilities while maintaining secure communication
+                      through JWT.
+                    </p>
+
+                    <h4>Security Considerations</h4>
+                    <p>
+                      Our JWT implementation includes several security measures:
+                    </p>
+                    <ol>
+                      <li>
+                        <strong>Token Expiration</strong>: All tokens have a
+                        24-hour expiration time
+                      </li>
+                      <li>
+                        <strong>Secure Cookie Storage</strong>: Tokens are
+                        stored with the `Secure` and `SameSite=Strict` flags
+                      </li>
+                      <li>
+                        <strong>Password Hashing</strong>: User passwords are
+                        hashed using bcrypt before storage
+                      </li>
+                      <li>
+                        <strong>Minimal Payload</strong>: We store only
+                        essential information in the JWT payload
+                      </li>
+                    </ol>
+                    <p>
+                      By implementing JWT authentication, we've created a
+                      scalable, stateless authentication system that works well
+                      with our microservices architecture while maintaining high
+                      security standards.
+                    </p>
+                  </div>
+                  <!-- end col -->
+                </div>
+                <!-- end row -->
+              </section>
+              <!-- end section -->
+
+              <!-- Add this to the head section of the HTML to load the Mermaid JS library -->
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.7/mermaid.min.js"></script>
+              <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                  mermaid.initialize({
+                    startOnLoad: true,
+                    theme: "default",
+                    securityLevel: "loose",
+                    flowchart: {
+                      useMaxWidth: true,
+                      htmlLabels: true,
+                      curve: "basis",
+                    },
+                  });
+                });
+              </script>
             </section>
             <!-- end section -->
 
@@ -1655,17 +1954,13 @@ async def login(request: models.LoginRequest):
                 connection.
               </p>
 
-              <img
-                src="images/upload/typescript_unit_test.png"
-                alt="Unit tests image"
-                style="max-width: 800px; width: 100%; height: auto"
-              />
+              <h2 id="line8_2">Frontend Testing</h2>
               <p>
-                On the frontend, we used
-                <strong>TypeScript unit tests</strong> to validate UI
-                components, input validation, and utility functions. These tests
-                help catch logic issues early and ensure consistent rendering
-                and behavior in the React-based Whisper Client interface.
+                For testing these components, we as a group decided to use
+                Vitest. Vitest is fast and efficient, using Vite's build system
+                for quick test runs. It works well with modern tools like
+                TypeScript and JSX. With simple APIs and built-in features like
+                mocking, it makes testing easier and faster.
               </p>
 
               <h4 id="line8_2">Database Testing</h4>
@@ -1698,12 +1993,12 @@ async def login(request: models.LoginRequest):
 
               <h4 id="line8_3">Integration Tests</h4>
               <img
-                src="images/upload/python_e2e_test.png"
-                alt="End-to-End tests image"
+                src="images/upload/python_integration_test.png"
+                alt="Integration tests image"
                 style="max-width: 800px; width: 100%; height: auto"
               />
               <p>
-                Our <strong>end-to-end (E2E) tests</strong> simulate real user
+                Our <strong>integration tests</strong> simulate real user
                 interactions and validate the system as a whole. Written in
                 Python using <strong>pytest</strong>, these tests interact with
                 live API endpoints, ensuring that requests and responses
@@ -1711,9 +2006,9 @@ async def login(request: models.LoginRequest):
               </p>
 
               <p>
-                Each E2E test covers scenarios like chat creation, user login,
-                message sending, and permission validation. These tests help
-                verify integration between components and provide high
+                Each integration test covers scenarios like chat creation, user
+                login, message sending, and permission validation. These tests
+                help verify integration between components and provide high
                 confidence that the endpoints behave correctly in
                 production-like environments.
               </p>
@@ -1721,17 +2016,17 @@ async def login(request: models.LoginRequest):
               <h4 id="line8_4">How to Run the Tests</h4>
               <p>
                 To ensure the stability and reliability of our application,
-                we’ve set up both unit and end-to-end test suites. You can run
+                we’ve set up both unit and integration test suites. You can run
                 them locally using the following commands:
               </p>
 
-              <h5>🧪 Backend Unit Tests (Python)</h5>
+              <h5>Backend Unit Tests (Python)</h5>
               <pre><code>pytest tests/unit_tests</code></pre>
 
-              <h5>🚀 End-to-End Tests (Python)</h5>
-              <pre><code>pytest tests/end_to_end_tests</code></pre>
+              <h5>Backend Integration Tests (Python)</h5>
+              <pre><code>pytest tests/integration_tests</code></pre>
 
-              <h5>🧩 Frontend Unit Tests (TypeScript)</h5>
+              <h5>Frontend Unit Tests (TypeScript)</h5>
               <pre><code>npm run test</code></pre>
 
               <h5>Testing in VSCode</h5>
