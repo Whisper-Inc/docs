@@ -1373,6 +1373,24 @@ async def login(request: models.LoginRequest):
                       class="img-responsive img-thumbnail"
                     />
                   </a>
+                <div style="margin: 1rem 0">
+                  <p>
+                    The WebSocket server is implemented in the whisper-client
+                    service, allowing it to handle real-time message delivery
+                    directly. This architecture enables the client to manage
+                    WebSocket connections and broadcast messages to participants
+                    in a chat.
+                  </p>
+
+                </div>
+
+                  <a href="images/upload/webby.png" data-rel="prettyPhoto">
+                    <img
+                      src="images/upload/webby.png"
+                      alt="WebSocket in Client Architecture"
+                      class="img-responsive img-thumbnail"
+                    />
+                  </a>
 
                   <h4>WebSocket Server in whisper-client</h4>
                   <pre class="brush: js">
@@ -1715,28 +1733,7 @@ async def login(request: models.LoginRequest):
                       Similarly, the registration process sends user credentials to the backend's register endpoint. Upon successful registration, the user is redirected to the login page to authenticate with their new credentials.
                     </p>
               
-                    <pre class="brush: js">
-              // Example of making an authenticated request to get chats
-              export const fetchUserChats = async (): Promise<ChatResponse[]> => {
-                try {
-                  // Use the authenticatedFetch helper to include JWT
-                  const response = await authenticatedFetch(
-                    `${process.env.NEXT_PUBLIC_API_URL}get-chats`, 
-                    { method: "GET" }
-                  );
-                  
-                  if (!response.ok) {
-                    throw new Error("Failed to fetch chats");
-                  }
-                  
-                  const data = await response.json();
-                  return data;
-                } catch (error) {
-                  console.error("Error fetching chats:", error);
-                  throw error;
-                }
-              };
-                    </pre>
+                    
               
                     <h4>Backend Authentication Implementation</h4>
                     <h5>JWT Token Generation</h5>
