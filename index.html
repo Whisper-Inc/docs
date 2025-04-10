@@ -1852,7 +1852,6 @@ async def login(request: models.LoginRequest):
                     <ol>
                       <li><strong>Token Expiration</strong>: All tokens have a 24-hour expiration time</li>
                       <li><strong>Secure Cookie Storage</strong>: Tokens are stored with the `Secure` and `SameSite=Strict` flags</li>
-                      <li><strong>HTTPS-Only</strong>: All authentication communications occur over HTTPS</li>
                       <li><strong>Password Hashing</strong>: User passwords are hashed using bcrypt before storage</li>
                       <li><strong>Minimal Payload</strong>: We store only essential information in the JWT payload</li>
                     </ol>
