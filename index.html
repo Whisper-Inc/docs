@@ -267,13 +267,13 @@
                   <h4 id="line0_1">Role Definitions</h4>
   
                   <h5>Jamie Wells: Project Lead</h5>
-                  <p>Jamie, our team leader was responsible for defining the project scope, delegating tasks, and maintaining overall project direction. In addition to leadership duties, he contributed to the project setup, configuration, and backend development.</p>
+                  <p>Jamie, the self-proclaimed leader was responsible for defining the project scope, delegating tasks, and maintaining overall project direction. In addition to leadership duties, he contributed to the project setup, configuration, and backend development.</p>
                   
                   <h5>Syed Abbas: UI/UX & Backend Integration</h5>
                   <p>Syed focused primarily on frontend development, working on React-based UI components while also configuring API endpoints to bridge frontend and backend functionality.</p>
                   
-                  <h5>Mahbubur Rahman: Full Stack – Authentication Specialist</h5>
-                  <p>Contributing across both backend and frontend, Hysam concentrated on the user authentication flow, including login and registration functionality, ensuring secure and smooth access to the system.</p>
+                  <h5>Mahbubur Rahman: Full Stack – Authentication& websocket Specialist</h5>
+                  <p>Contributing across both backend and frontend, Hysam concentrated on the user authentication flow, including login, registration and websocket functionality, ensuring secure and instant access to the system.</p>
                   
                   <h5>Samuel Gagatek: Backend & Testing</h5>
                   <p>Samuel worked mainly on backend logic and was instrumental in implementing and running automated tests. This ensured the stability of the codebase through unit and end-to-end testing.</p>
@@ -1071,8 +1071,265 @@ async def login(request: models.LoginRequest):
                 <!-- end col -->
               </div>
               <!-- end row -->
-              <h4 id="line7_1">Placeholder</h4>
-              <p>Placeholder</p>
+            
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 id="line7_1">Microservices Architecture Integration</h4>
+                  <p>
+                    Our chat application is built on a microservices architecture with two main services: whisper-client (frontend) and whisper-core (backend). The whisper-client handles all user interface components and WebSocket connections, while whisper-core manages data persistence and REST API endpoints.
+                  </p>
+            
+                  <h4>System Architecture</h4>
+                  <a href="images/upload/fullstack1.png" data-rel="prettyPhoto">
+                    <img src="images/upload/fullstack1.png" alt="Microservices Architecture Diagram" class="img-responsive img-thumbnail" />
+                  </a>
+            
+                  <h4>REST API Integration with whisper-core</h4>
+                  <p>
+                    The frontend (whisper-client) communicates with whisper-core via REST API endpoints for operations that require data persistence, such as user authentication, creating chats, and storing messages.
+                  </p>
+            
+                  <pre class="brush: js">
+            // lib/model/chatModel.ts - Sending a message via REST API
+            public async sendMessage(chatId, sender, message) {
+              const requestBody = {
+                chat_id: chatId,
+                sender: sender,
+                message: message,
+              };
+            
+              const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}send-message`,
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(requestBody),
+                }
+              );
+            
+              return await response.json();
+            }</pre>
+            
+                  <h4>whisper-core Backend API Handler</h4>
+                  <p>
+                    Our FastAPI backend in whisper-core processes these requests and persists data to MongoDB.
+                  </p>
+            
+                  <pre class="brush: python">
+            # In whisper-core service
+            @app.post("/send-message")
+            async def send_message(request: models.SendMessageRequest):
+                """Endpoint to add a message to a chat."""
+                try:
+                    message_document = config.user_manager.add_message_to_chat(
+                        chat_id=request.chat_id, 
+                        sender=request.sender, 
+                        message=request.message
+                    )
+                    
+                    return message_document
+                except Exception as e:
+                    raise HTTPException(
+                        status_code=500, 
+                        detail={"message": "Failed to send message"}
+                    )</pre>
+            
+                  <h4>WebSocket Implementation in whisper-client</h4>
+                  <p>
+                    Unlike traditional architectures, our WebSocket implementation resides in the whisper-client microservice rather than the backend. This design choice allows for more responsive real-time updates and reduces load on the core backend services.
+                  </p>
+            
+                  <a href="images/upload/fullstack2.png" data-rel="prettyPhoto">
+                    <img src="images/upload/fullstack2.png" alt="WebSocket in Client Architecture" class="img-responsive img-thumbnail" />
+                  </a>
+            
+                  <h4>WebSocket Server in whisper-client</h4>
+                  <pre class="brush: js">
+            // In whisper-client service - WebSocket server implementation
+            const WebSocket = require('ws');
+            const http = require('http');
+            const server = http.createServer(app);
+            const wss = new WebSocket.Server({ server });
+            
+            // Store active connections
+            const connections = new Map();
+            
+            wss.on('connection', (ws, req) => {
+              const token = getTokenFromRequest(req);
+              const username = validateToken(token);
+              
+              if (!username) {
+                ws.close(1008, 'Invalid token');
+                return;
+              }
+              
+              // Store connection by username
+              connections.set(username, ws);
+              
+              ws.on('message', (messageData) => {
+                const data = JSON.parse(messageData);
+                
+                if (data.type === 'send_message') {
+                  // Process message and broadcast to participants
+                  const { chat_id, sender, message } = data;
+                  
+                  // Get chat participants from local cache or API
+                  getChatParticipants(chat_id).then(participants => {
+                    // Broadcast to all participants
+                    participants.forEach(participant => {
+                      const participantWs = connections.get(participant);
+                      if (participantWs && participantWs.readyState === WebSocket.OPEN) {
+                        participantWs.send(JSON.stringify({
+                          type: 'new_message',
+                          chat_id,
+                          sender,
+                          message
+                        }));
+                      }
+                    });
+                  });
+                }
+              });
+              
+              ws.on('close', () => {
+                // Remove connection on disconnect
+                connections.delete(username);
+              });
+            });</pre>
+            
+                  <h4>WebSocket Client Implementation</h4>
+                  <p>
+                    The React frontend connects to the WebSocket server to receive real-time updates:
+                  </p>
+            
+                  <pre class="brush: js">
+            // In React component - WebSocket client connection
+            const [socket, setSocket] = useState(null);
+            
+            useEffect(() => {
+              const token = localStorage.getItem('token');
+              if (!token) return;
+              
+              // Connect to WebSocket server
+              const ws = new WebSocket(`${process.env.NEXT_PUBLIC_WS_URL}?token=${token}`);
+              
+              ws.onopen = () => {
+                console.log('WebSocket connection established');
+              };
+              
+              ws.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                
+                if (data.type === 'new_message') {
+                  // Update chat with new message
+                  if (data.chat_id === selectedChat) {
+                    setMessages(prev => [...prev, {
+                      sender: data.sender,
+                      text: data.message,
+                      timestamp: Date.now() / 1000
+                    }]);
+                  } else {
+                    // Update chat list to show new message indicator
+                    setUnreadChats(prev => new Set([...prev, data.chat_id]));
+                  }
+                }
+              };
+              
+              ws.onclose = () => {
+                console.log('WebSocket connection closed');
+              };
+              
+              setSocket(ws);
+              
+              // Clean up on unmount
+              return () => {
+                if (ws) ws.close();
+              };
+            }, []);</pre>
+          
+            
+                  <h4>Optimistic UI Updates</h4>
+                  <p>
+                    To enhance user experience, we implement optimistic UI updates that show messages immediately when sent:
+                  </p>
+            
+                  <pre class="brush: js">
+            // Adding a message optimistically
+            const handleSendMessage = async () => {
+              if (!newMessage.trim() || !selectedChat || !username) return;
+            
+              // Generate client ID for tracking
+              const clientId = generateClientId();
+              
+              // Create pending message and add it immediately
+              const pendingMessage = {
+                sender: username,
+                text: newMessage,
+                timestamp: Date.now() / 1000,
+                clientId: clientId,
+                isPending: true
+              };
+            
+              // Add to UI immediately
+              setMessages(messages => [...messages, pendingMessage]);
+              setNewMessage("");
+              
+              // 1. Send to REST API for persistence
+              try {
+                const response = await sendMessage(
+                  selectedChat, 
+                  username, 
+                  pendingMessage.text
+                );
+                
+                // 2. Send to WebSocket for real-time delivery
+                if (socket && socket.readyState === WebSocket.OPEN) {
+                  socket.send(JSON.stringify({
+                    type: 'send_message',
+                    chat_id: selectedChat,
+                    sender: username,
+                    message: pendingMessage.text
+                  }));
+                }
+                
+                // Update message status once confirmed
+                setMessages(messages => 
+                  messages.map(msg => 
+                    msg.clientId === clientId 
+                      ? { ...msg, isPending: false, _id: response._id } 
+                      : msg
+                  )
+                );
+              } catch (error) {
+                // Handle error state
+                setMessages(messages => 
+                  messages.map(msg => 
+                    msg.clientId === clientId 
+                      ? { ...msg, text: `${msg.text} (Failed)`, isPending: false } 
+                      : msg
+                  )
+                );
+              }
+            };</pre>
+            
+                  <h4>Benefits of Client-side WebSocket Architecture</h4>
+                  <p>
+                    By implementing WebSockets in the whisper-client service rather than whisper-core, we gain several advantages:
+                  </p>
+                  <ul>
+                    <li>Reduced load on the core backend service</li>
+                    <li>Lower latency for real-time message delivery</li>
+                    <li>Simplified scaling for the WebSocket service independently</li>
+                    <li>Clearer separation of concerns between persistence (REST API) and real-time communication</li>
+                  </ul>
+            
+                  <div class="intro2 clearfix">
+                    <p>
+                      <i class="fa fa-exclamation-triangle"></i> Even with WebSockets implemented in the client service, we maintain security by requiring token authentication for all connections. The microservices architecture allows each component to be scaled independently based on its specific resource needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </section>
             <!-- end section -->
 
