@@ -150,9 +150,6 @@
                 </li>
                 <li><a href="#line1">Analysis</a></li>
                 <li>
-                  <a href="#line3">Project Setup</a>
-                </li>
-                <li>
                   <a href="#line4">UI Development</a>
                   <ul class="nav">
                     <li><a href="#line4_1">Inital Components</a></li>
@@ -1947,11 +1944,10 @@ async def login(request: models.LoginRequest):
               />
               <p>
                 For the backend, we created focused unit tests, using pytest,
-                around the <strong>MongoUserManager</strong> class, which
-                handles database interactions such as user creation, chat
-                management, and message storage. These tests mock MongoDB
-                responses to validate logic without needing a real database
-                connection.
+                around the MongoUserManager class, which handles database
+                interactions such as user creation, chat management, and message
+                storage. These tests mock MongoDB responses to validate logic
+                without needing a real database connection.
               </p>
 
               <h2 id="line8_2">Frontend Testing</h2>
@@ -2095,7 +2091,7 @@ async def login(request: models.LoginRequest):
               <h4 id="line8_4">How to Run the Tests</h4>
               <p>
                 To ensure the stability and reliability of our application,
-                we’ve set up both unit and integration test suites. You can run
+                we've set up both unit and integration test suites. You can run
                 them locally using the following commands:
               </p>
 
@@ -2131,6 +2127,21 @@ async def login(request: models.LoginRequest):
                 the full suite regularly helps catch regressions early and
                 ensures all features continue to work as expected.
               </p>
+              <h4>Test Coverage</h4>
+              <p>
+                Test converage can be viewed via the coverage PyPI module. It
+                shows how much code has been covered by each test, as well as
+                the lines that your tests have not hit. We decided to include
+                our logic in the test coverage as if there are tests that are
+                failing, it can be easier to debug why they're failing if you
+                understand which lines in the model aren't being run.
+              </p>
+              <a href="images/upload/coverage.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/coverage.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
             </section>
             <!-- end section -->
 
