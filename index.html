@@ -177,7 +177,7 @@
                   <a href="#line8">Writing Tests</a>
                   <ul class="nav">
                     <li><a href="#line8_1">Unit Tests</a></li>
-                    <li><a href="#line8_2">Manual Testing</a></li>
+                    <li><a href="#line8_2">Frontend Testing</a></li>
                     <li><a href="#line8_3">Integration Tests</a></li>
                     <li><a href="#line8_4">How to Run the Tests</a></li>
                   </ul>
@@ -1956,14 +1956,93 @@ async def login(request: models.LoginRequest):
 
               <h2 id="line8_2">Frontend Testing</h2>
               <p>
-                For testing these components, we as a group decided to use
-                Vitest. Vitest is fast and efficient, using Vite's build system
-                for quick test runs. It works well with modern tools like
-                TypeScript and JSX. With simple APIs and built-in features like
-                mocking, it makes testing easier and faster.
-              </p>
+                   For testing these components, we as a group decided to use
+                   Vitest. Vitest is fast and efficient, using Vite's build
+                   system for quick test runs. It works well with modern tools
+                   like TypeScript and JSX. With simple APIs and built-in
+                   features like mocking, it makes testing easier and faster.
+                 </p>
+ 
+                 <h3>Purpose of Testing UI Components</h3>
+                 <p>
+                   Testing UI components is important because it ensures that the
+                   user interface works as expected, providing a smooth and
+                   bug-free experience for users. It helps catch issues early,
+                   preventing them from affecting the overall functionality or
+                   user satisfaction. Additionally, UI testing ensures that
+                   changes or new features don’t unintentionally break existing
+                   parts of the application, maintaining consistency and
+                   reliability.
+                 </p>
+ 
+                 <h3>Component Testing</h3>
+                 <p>
+                   For testing our componets, I first drafted out all the
+                   possible scenarios I could cover int he test cases, by
+                   carefully examining each component. This helped make sure the
+                   tests provided a good overall coverage and made our components
+                   more robust
+                 </p>
+ 
+                 <p>Here are some of the test cases:</p>
+                 <pre class="brush: js">
+                   describe("ChatWindow component", () => {
+                       const defaultProps = {
+                           selectedChat: "Project Team",
+                           chatHeader: "Project Team",
+                           selectedParticipants: ["Alice", "Bob"]
+                       };
+                   
+                       it("renders chat header correctly", () => {
+                           render(<ChatWindow {...defaultProps} />);
+                           expect(screen.getByText("Project Team")).toBeInTheDocument();
+                       });
+                   
+                       it("renders mock messages based on selected chat", () => {
+                           render(<ChatWindow {...defaultProps} />);
+                           expect(screen.getByText("Alice: Meeting at 3 PM?")).toBeInTheDocument();
+                           expect(screen.getByText("Bob: Sounds good!")).toBeInTheDocument();
+                       });
+                   
+                       it("sends a new message and updates the UI", () => {
+                           render(<ChatWindow {...defaultProps} />);
+                           const input = screen.getByPlaceholderText("Type a message...");
+                           const sendButton = screen.getByText("Send");
+                   
+                           fireEvent.change(input, { target: { value: "Hello test!" } });
+                           fireEvent.click(sendButton);
+                   
+                           expect(screen.getByText("User: Hello test!")).toBeInTheDocument();
+                       });
+                   
+                       it("opens the update chat modal when clicking 'Edit Chat'", () => {
+                           render(<ChatWindow {...defaultProps} />);
+                           const editButton = screen.getByText("Edit Chat");
+                           fireEvent.click(editButton);
+                   
+                           expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
+                       });
+                   
+                       it("renders fallback text when no chat is selected", () => {
+                           render(<ChatWindow selectedChat={null} chatHeader={null} selectedParticipants={[]} />);
+                           expect(screen.getByText("Select a chat to start messaging")).toBeInTheDocument();
+                       });
+                   });
+                   </pre>
+                 <a href="images/upload/testPassing.png" data-rel="prettyPhoto"
+                   ><img
+                     src="images/upload/testPassing.png"
+                     alt=""
+                     class="img-responsive img-thumbnail"
+                     style="
+                       width: 75%;
+                       max-width: 500px;
+                       margin: 1rem auto;
+                       display: block;
+                     "
+                /></a>
 
-              <h4 id="line8_2">Database Testing</h4>
+              <h4 id="line8_3">Database Testing</h4>
               <p>
                 Now that the database had been set up and the request handlers
                 for communicating to the database had been committed, it was
