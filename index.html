@@ -688,24 +688,17 @@
                     send requests and updates the view accordingly.
                   </p>
 
-                  <strong>Backend Mircoservice (MVC)</strong>
+                  <strong>Backend Mircoservice (Model & Controller)</strong>
                   <p>
                     Model: Contains the business logic and data structure, such
-                    as user authentication, message storage, and group chat
-                    management. It manages interactions with the database.
-                  </p>
-                  <p>
-                    View: The API responses that the frontend receives from the
-                    backend. These views are not directly presented to the user
-                    but are the data structures (like JSON) that are returned to
-                    the frontend for rendering.
+                    as user group chat management. It also manages interactions with the database.
                   </p>
                   <p>
                     Controller: The API controllers that handle incoming
                     requests from the frontend, such as creating accounts,
                     sending messages, or updating group chats. The controller
                     processes requests, interacts with the model (business
-                    logic), and returns the necessary data (view) to the
+                    logic), and returns the necessary data to the
                     frontend.
                   </p>
 
