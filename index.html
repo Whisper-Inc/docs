@@ -151,21 +151,14 @@
                 <li><a href="#line1">Analysis</a></li>
                 <li>
                   <a href="#line3">Project Setup</a>
-                  <ul class="nav">
-                    <li><a href="#line3_1">Organisation</a></li>
-                    <li><a href="#line3_2">Repositories</a></li>
-                    <li><a href="#line3_3"></a></li>
-                  </ul>
                 </li>
                 <li>
                   <a href="#line4">UI Development</a>
                   <ul class="nav">
-                    <li><a href="#line4_1">Inital Ideas and Components</a></li>
-                    <li><a href="#line4_2">Integrating with Backend</a></li>
+                    <li><a href="#line4_1">Inital Components</a></li>
+                    <li><a href="#line4_2">Backend Integration</a></li>
                     <li>
-                      <a href="#line4_3"
-                        >Login System and Web Socket Implementation</a
-                      >
+                      <a href="#line4_3">Login and Web Sockets</a>
                     </li>
                     <li><a href="#line4_4">Testing</a></li>
                   </ul>
@@ -176,7 +169,6 @@
                     <li><a href="#line6_1">Setup</a></li>
                     <li><a href="#line6_2">UserManager</a></li>
                     <li><a href="#line6_3">Endpoints</a></li>
-                    <li><a href="#line6_4">Testing</a></li>
                   </ul>
                 </li>
                 <li>
@@ -186,7 +178,9 @@
                   <a href="#line8">Writing Tests</a>
                   <ul class="nav">
                     <li><a href="#line8_1">Unit Tests</a></li>
-                    <li><a href="#line8_2">End-to-End Tests</a></li>
+                    <li><a href="#line8_2">Manual Testing</a></li>
+                    <li><a href="#line8_3">Integration Tests</a></li>
+                    <li><a href="#line8_4">How to Run the Tests</a></li>
                   </ul>
                 </li>
                 <li>
@@ -237,21 +231,6 @@
                           the future, but this documentation will cover the
                           basics of how we went from zero to a public MVP.
                         </p>
-
-                        <h4>Requirements</h4>
-                        <p>
-                          You will need Docker installed to use this service
-                          locally.
-                        </p>
-                        <div class="intro2 clearfix">
-                          <p>
-                            <i class="fa fa-exclamation-triangle"></i> Some of
-                            the commands shown in the references (such as brew
-                            install) will only be available on macOS and Linux
-                            operating systems.
-                            <br />
-                          </p>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -270,7 +249,7 @@
                   </h2>
                   <h4 id="line0_1">Role Definitions</h4>
 
-                  <h5>Jamie Wells: Project Lead</h5>
+                  <h4>Jamie Wells: Project Lead</h4>
                   <p>
                     Jamie, the team lead, is responsible for defining the
                     project scope, delegating tasks, and maintaining overall
@@ -279,16 +258,16 @@
                     development.
                   </p>
 
-                  <h5>Syed Abbas: UI/UX & Backend Integration</h5>
+                  <h4>Syed Abbas: UI/UX & Backend Integration</h4>
                   <p>
                     Syed focused primarily on frontend development, working on
                     React-based UI components while also configuring API
                     endpoints to bridge frontend and backend functionality.
                   </p>
 
-                  <h5>
+                  <h4>
                     Mahbubur Rahman: Full Stack - Authentication & Integration
-                  </h5>
+                  </h4>
                   <p>
                     Contributing across both backend and frontend, Hysam
                     concentrated on the user authentication flow, including
@@ -296,7 +275,7 @@
                     secure and instant access to the system.
                   </p>
 
-                  <h5>Samuel Gagatek: Backend & Testing</h5>
+                  <h4>Samuel Gagatek: Backend & Testing</h4>
                   <p>
                     Samuel worked mainly on backend logic and was instrumental
                     in implementing and running automated tests. This ensured
@@ -305,9 +284,9 @@
                   </p>
 
                   <h4 id="line0_2">Collaboration & Leadership</h4>
-                  <h4>GitHub Kanban Board</h4>
+                  <h4>GitHub Scrum Board</h4>
                   <p>
-                    We used a GitHub Kanban board to effectively delegate and
+                    We used a GitHub scrum board to effectively delegate and
                     manage tasks across our team. Each sprint was organized into
                     clear milestones with tracked progress, ensuring alignment
                     and accountability.
@@ -327,10 +306,11 @@
                   </p>
 
                   <h5>Sprint 2: Core Feature Development & Testing</h5>
-                  <img 
-                    src="images/upload/Kanban_Board_Sprint_2.png" 
-                    alt="Sprint2 image" 
-                    style="max-width: 800px; width: 100%; height: auto;"
+                  <img
+                    src="images/upload/Kanban_Board_Sprint_2.png"
+                    alt="Sprint
+                  2 image"
+                    style="max-width: 800px; width: 100%; height: auto"
                   />
                   <p>
                     During Sprint 2, we built out major features like
@@ -340,10 +320,11 @@
                   </p>
 
                   <h5>Sprint 3: Documentation & Polishing</h5>
-                  <img 
+                  <img
                     src="images/upload/Kanban_Board_Sprint_3.png"
-                    alt="Sprint 3 image" 
-                    style="max-width: 800px; width: 100%; height: auto;"
+                    alt="Sprint
+                  3 image"
+                    style="max-width: 800px; width: 100%; height: auto"
                   />
                   <p>
                     Sprint 3 focused on testing, bug fixes, and refining UX. We
@@ -351,10 +332,11 @@
                   </p>
 
                   <h5>Sprint 4: Building out more features</h5>
-                  <img 
+                  <img
                     src="images/upload/Kanban_Board_Sprint_4.png"
-                    alt="Sprint 4 image" 
-                    style="max-width: 800px; width: 100%; height: auto;"
+                    alt="Sprint
+                  4 image"
+                    style="max-width: 800px; width: 100%; height: auto"
                   />
                   <p>
                     Sprint 4 will focus on expanding our project with more
@@ -386,7 +368,7 @@
                       balanced workloads.
                     </li>
                     <li>
-                      <strong>Kanban board updates:</strong> Moved cards across
+                      <strong>Scrum board updates:</strong> Moved cards across
                       columns (To Do, In Progress, Done) and added new issues or
                       features to track.
                     </li>
@@ -455,9 +437,9 @@
                   </ul>
 
                   <p>
-                    We used GitHub’s pull request system to manage reviews,
+                    We used GitHub's pull request system to manage reviews,
                     assign reviewers, and track changes. This workflow ensured
-                    that all team members were engaged in each other’s work and
+                    that all team members were engaged in each other's work and
                     contributed to the overall quality of the project.
                   </p>
 
@@ -792,39 +774,48 @@
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
                     Project Setup
-                    <p>k</p>
                     <hr />
                   </h2>
+                  <p>
+                    In order to make it simple to run locally, we have
+                    abstracted the initial setup logic by creating a Dockerfile
+                    for running our application on Docker.
+                  </p>
+                  <a href="images/upload/dockerfile.png" data-rel="prettyPhoto"
+                    ><img
+                      src="images/upload/dockerfile.png"
+                      alt=""
+                      class="img-responsive img-thumbnail"
+                      style="
+                        width: 75%;
+                        max-width: 500px;
+                        margin: 1rem auto;
+                        display: block;
+                      "
+                    />
+                  </a>
+                  <p>
+                    With this implemented, you can simply run the following two
+                    commands to spin up a local instance of the service:
+                  </p>
+                  <pre class="brush: bash">
+                    docker compose build
+                  </pre>
+                  <pre class="brush: bash">
+                    docker compose up
+                  </pre>
+                  <p>
+                    This will bring up two containers; one for the FastAPI
+                    application, and one for the MongoDB instance connection.
+                  </p>
+                  <p>
+                    This is a much better alternative to using a Python virtual
+                    environment, as this would require manually installing
+                    dependencies after each clone/fork, and by containerising
+                    the application, we can easily deploy it in other locations.
+                  </p>
                 </div>
                 <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <hr />
-              <hr />
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="media">
-                    <iframe
-                      width="560"
-                      height="315"
-                      src="https://www.youtube.com/embed/yQnQyI5WlKs"
-                      frameborder="0"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="media">
-                    <iframe
-                      width="560"
-                      height="315"
-                      src="https://www.youtube.com/embed/z0kEVwJB_go"
-                      frameborder="0"
-                      allowfullscreen
-                    ></iframe>
-                  </div>
-                </div>
               </div>
             </section>
             <!-- end section -->
@@ -843,7 +834,7 @@
               <!-- end row -->
 
               <div class="col-md-12">
-                <h2 id="line4_1" class="font">Initial Ideas and Components</h2>
+                <h2 id="line4_1" class="font">Initial Components</h2>
                 <p>
                   As dicussed previously, for the user interface we as a group
                   have decided to use React Js with NextJs and Typescript. For
@@ -856,7 +847,7 @@
                   on.
                 </p>
 
-                <h4>Components for Basic Structure</h4>
+                <h4 id="line4_2">Components for Basic Structure</h4>
                 <p>
                   As we are following MVC, these are our main view components
                 </p>
@@ -956,7 +947,7 @@
                   />
                 </a>
 
-                <h4>Chat Modal Implementation</h4>
+                <h4 id="line4_3">Chat Modal Implementation</h4>
                 <p>
                   For users to be able to create chats and update them, I
                   decided to create a modal which can update.
@@ -1004,7 +995,7 @@
                   />
                 </a>
 
-                <h2 id="line4_2">Integrating with Backend</h2>
+                <h2 id="line4_4">Integrating with Backend</h2>
                 <p>
                   As our main components have been developed, I now moved onto
                   creating model components to define requests and responses
@@ -1076,10 +1067,10 @@
                   </pre
                 >
 
-                <h2 id="line4_3">Login System and Web Socket Implementation</h2>
+                <h2 id="line4_5">Login System and Web Socket Implementation</h2>
                 <p>Hysams Sections</p>
 
-                <h2 id="line4_4">Testing</h2>
+                <h2 id="line4_6">Testing</h2>
                 <p>
                   For testing these components, we as a group decided to use
                   Vitest. Vitest is fast and efficient, using Vite's build
@@ -1317,33 +1308,6 @@ async def login(request: models.LoginRequest):
               /></a>
               <br />
               <br />
-              <h4 id="line6_4">Testing</h4>
-              <p>
-                Now that the database had been set up and the request handlers
-                for communicating to the database had been committed, it was
-                time to start sending test requests to these endpoints.
-              </p>
-              <p>
-                In order to this, we had two options. We could run copy and
-                paste the localhost URL into the browser and add the endpoint we
-                wanted to hit onto the end, but this wouldn't work for any
-                request that required a request body or request header. To solve
-                this, we used Postman, where we could customise the request
-                type, body, and headers.
-              </p>
-              <a href="images/upload/postman.png" data-rel="prettyPhoto"
-                ><img
-                  src="images/upload/postman.png"
-                  alt=""
-                  class="img-responsive img-thumbnail"
-              /></a>
-              <p>
-                By being able to add custom headers to each request, this would
-                allow us to authenticate necessary requests with a custom
-                Whisper API key so that users couldn't make unauthenticated
-                requets. For our automated end-to-end tests, please see
-                <a href="#line8">Writing Tests</a>.
-              </p>
             </section>
             <!-- end section -->
 
@@ -1704,7 +1668,35 @@ async def login(request: models.LoginRequest):
                 and behavior in the React-based Whisper Client interface.
               </p>
 
-              <h4 id="line8_2">End-to-End Tests</h4>
+              <h4 id="line8_2">Database Testing</h4>
+              <p>
+                Now that the database had been set up and the request handlers
+                for communicating to the database had been committed, it was
+                time to start sending test requests to these endpoints.
+              </p>
+              <p>
+                In order to this, we had two options. We could run copy and
+                paste the localhost URL into the browser and add the endpoint we
+                wanted to hit onto the end, but this wouldn't work for any
+                request that required a request body or request header. To solve
+                this, we used Postman, where we could customise the request
+                type, body, and headers.
+              </p>
+              <a href="images/upload/postman.png" data-rel="prettyPhoto"
+                ><img
+                  src="images/upload/postman.png"
+                  alt=""
+                  class="img-responsive img-thumbnail"
+              /></a>
+              <p>
+                By being able to add custom headers to each request, this would
+                allow us to authenticate necessary requests with a custom
+                Whisper API key so that users couldn't make unauthenticated
+                requets. For our automated end-to-end tests, please see
+                <a href="#line8">Writing Tests</a>.
+              </p>
+
+              <h4 id="line8_3">Integration Tests</h4>
               <img
                 src="images/upload/python_e2e_test.png"
                 alt="End-to-End tests image"
@@ -1726,7 +1718,7 @@ async def login(request: models.LoginRequest):
                 production-like environments.
               </p>
 
-              <h4 id="line8_3">How to Run the Tests</h4>
+              <h4 id="line8_4">How to Run the Tests</h4>
               <p>
                 To ensure the stability and reliability of our application,
                 we’ve set up both unit and end-to-end test suites. You can run
@@ -2023,45 +2015,16 @@ CMD ["nginx", "-g", "daemon off;"]
                 <div class="col-md-12 left-align">
                   <h2 class="dark-text">
                     CI/CD
+                    <p>Jamie Wells</p>
                     <hr />
                   </h2>
+                  <p></p>
                 </div>
+
                 <!-- end col -->
               </div>
               <h4 id="line7_1">Placeholder</h4>
               <p>Placeholder</p>
-            </section>
-            <!-- end section -->
-
-            <section id="line11" class="section">
-              <div class="row">
-                <div class="col-md-12 left-align">
-                  <h2 class="dark-text">
-                    Copyright and license
-                    <hr />
-                  </h2>
-                </div>
-                <!-- end col -->
-              </div>
-              <!-- end row -->
-
-              <div class="row">
-                <div class="col-md-12">
-                  <p>
-                    Code released under the
-                    <a href="#" target="_blank">Un License</a> License.
-                  </p>
-                  <p>
-                    For more information about copyright and license check
-                    <a
-                      href=" https://choosealicense.com/licenses/unlicense/"
-                      target="_blank"
-                      >choosealicense.com</a
-                    >.
-                  </p>
-                </div>
-              </div>
-              <!-- end row -->
             </section>
             <!-- end section -->
           </div>
