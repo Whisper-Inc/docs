@@ -189,6 +189,7 @@
                   </ul>
                 </li>
                 <li><a href="#line10">CI/CD</a></li>
+                <li><a href="#line11">Looking Forward</a></li>
               </ul>
             </nav>
           </div>
@@ -296,7 +297,7 @@
                   />
                   <p>
                     In Sprint 1, we focused on laying the foundation of the
-                    project. This included setting up the monorepo, CI/CD
+                    project. This included setting up the repositories, CI/CD
                     pipeline, database configuration and defining our tech stack
                     across core and client services.
                   </p>
@@ -440,7 +441,7 @@
                   </p>
 
                   <h4 id="line0_3">Design Choices</h4>
-                  <h4>Whisper Inc Organisation - Our monorepository</h4>
+                  <h4>Whisper Inc Organisation - Our Repositories</h4>
 
                   <h5>Whisper Core</h5>
                   <p>
@@ -505,7 +506,7 @@
                     We chose FastAPI for our backend framework instead of Flask
                     primarily due to its built-in support for asynchronous
                     request handling, which enables better performance and
-                    scalability. FastAPI’s use of modern Python features like
+                    scalability. FastAPI's use of modern Python features like
                     type hints and Pydantic models helped us write more robust,
                     self-validating code while improving code clarity and
                     autocompletion.
@@ -558,7 +559,7 @@
 
                   <ul>
                     <li>
-                      Given I’m logged into the app, When I open a chat and type
+                      Given I'm logged into the app, When I open a chat and type
                       a message, Then the message is sent and received by the
                       other user in real time.
                     </li>
@@ -685,6 +686,18 @@
                     sending messages, or updating group chats. The controller
                     processes requests, interacts with the model (business
                     logic), and returns the necessary data to the frontend.
+                  </p>
+                  <strong> Design patterns </strong>
+                  <p>
+                    One of the main design patterns we have implemented is the
+                    facade design pattern. This design pattern was key because
+                    of the collaborative nature of the project, as abstracting
+                    some of the behind-the-scenes logic would make it easier for
+                    others to work on existing code.
+                  </p>
+                  <p>
+                    We also implemented singletons within the database
+                    management infrastructure
                   </p>
 
                   <strong>Database</strong>
@@ -946,7 +959,7 @@
                       } catch (error) {
                           console.log("Error when creating chat:", error);
                       }
-                  }; 
+                  };
                   </pre
                 >
 
@@ -969,7 +982,7 @@
                   bug-free experience for users. It helps catch issues early,
                   preventing them from affecting the overall functionality or
                   user satisfaction. Additionally, UI testing ensures that
-                  changes or new features don’t unintentionally break existing
+                  changes or new features don't unintentionally break existing
                   parts of the application, maintaining consistency and
                   reliability.
                 </p>
@@ -1217,33 +1230,6 @@ async def login(request: models.LoginRequest):
               /></a>
               <br />
               <br />
-              <h4 id="line6_4">Testing</h4>
-              <p>
-                Now that the database had been set up and the request handlers
-                for communicating to the database had been committed, it was
-                time to start sending test requests to these endpoints.
-              </p>
-              <p>
-                In order to this, we had two options. We could run copy and
-                paste the localhost URL into the browser and add the endpoint we
-                wanted to hit onto the end, but this wouldn't work for any
-                request that required a request body or request header. To solve
-                this, we used Postman, where we could customise the request
-                type, body, and headers.
-              </p>
-              <a href="images/upload/postman.png" data-rel="prettyPhoto"
-                ><img
-                  src="images/upload/postman.png"
-                  alt=""
-                  class="img-responsive img-thumbnail"
-              /></a>
-              <p>
-                By being able to add custom headers to each request, this would
-                allow us to authenticate necessary requests with a custom
-                Whisper API key so that users couldn't make unauthenticated
-                requets. For our automated tests, please see
-                <a href="#line8">Writing Tests</a>.
-              </p>
             </section>
             <!-- end section -->
 
@@ -2329,7 +2315,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
                 <!-- end col -->
               </div>
-              <h4 id="line7_1">GitHub Actions</h4>
+              <h4>GitHub Actions</h4>
               <p>
                 Although we haven't quite finished our deployment process yet,
                 we have clearly defined tasks that need to be complete before
@@ -2350,6 +2336,84 @@ CMD ["nginx", "-g", "daemon off;"]
               </p>
             </section>
             <!-- end section -->
+
+            <section id="line11" class="section">
+              <div class="row">
+                <div class="col-md-12 left-align">
+                  <h2 class="dark-text">
+                    Looking Forward
+                    <p>Jamie Wells</p>
+                    <hr />
+                  </h2>
+                  <p></p>
+                </div>
+
+                <!-- end col -->
+              </div>
+              <h4>Enterprise API</h4>
+              <p>
+                As we've had to create multiple well-thought-out endpoints for
+                interacting with our Mongo database, it would be
+                straight-forward but effective to publicly release this API as
+                an enterprise solution, providing API keys to users and
+                integrating a rate limit.
+              </p>
+              <p>
+                This would be useful for those who are looking to create an
+                integrated messaging service within their own application, and
+                due to the lightweight nature of our messaging service and
+                database operations, we'd be able to offer this at a relatively
+                low cost.
+              </p>
+              <h4>Database Caching</h4>
+              <p>
+                Another main feature we want to develop is database caching to
+                decrease the overhead of regular database operations.
+              </p>
+              <p>
+                Messaging on a messaging platform is a very frequent task. This
+                is why I'm proposing that the database is not written to every
+                time a message is sent, rather stored in a local cache, and the
+                database written to in intervals.
+              </p>
+              <p>
+                This process would involve updating a local variable that is
+                stored server-side. This variable would lose its contents if the
+                server shut down, had to restart etc, so we'd write the contents
+                of this variable to a JSON file periodically.
+              </p>
+              <p>
+                This way, we'd only have to access the database once on server
+                start, and then use the persistent JSON storage to do all our
+                data operations. Each table in the database would have a
+                key-value pair variable in the following format:
+              </p>
+              <pre class="brush: js">
+                {
+                    "123456789x12345": "This is a message"
+                }
+              </pre>
+              <p>
+                Where the key is the unique ID of that entry, and the value is
+                the primary data, so for a message the key would be the message
+                content.
+              </p>
+              <p>
+                We'd then have access methods which would be resonsible for
+                updating the variables.
+              </p>
+              <pre class="brush: python">
+def update(self, table: str, unique_id: str, title: str) -> Dict[str, str]:
+    self.tables[table][unique_id] = title
+    self._schedule_write(table)
+    return {unique_id: title}
+              </pre>
+              <p>
+                It's important to note that this would not work across multiple
+                server instances, so we'd have to consider using a technology
+                like Redis for persistent storage across instances.
+              </p>
+            </section>
           </div>
           <!-- // end .col -->
         </div>
