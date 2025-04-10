@@ -186,7 +186,7 @@
                   <a href="#line8">Writing Tests</a>
                   <ul class="nav">
                     <li><a href="#line8_1">Unit Tests</a></li>
-                    <li><a href="#line8_2">End-to-End Tests</a></li>
+                    <li><a href="#line8_2">Integration Tests</a></li>
                   </ul>
                 </li>
                 <li>
@@ -289,7 +289,7 @@
                   <p>
                     Samuel worked mainly on backend logic and was instrumental
                     in implementing and running automated tests. This ensured
-                    the stability of the codebase through unit and end-to-end
+                    the stability of the codebase through unit and integration
                     testing.
                   </p>
 
@@ -325,7 +325,7 @@
                     During Sprint 2, we built out major features like
                     authentication, chat creation, and message handling. The
                     team worked across backend, frontend, and we added unit and
-                    end-to-end tests to ensure the code was maintainable.
+                    integration tests to ensure the code was maintainable.
                   </p>
 
                   <h5>Sprint 3: Documentation & Polishing</h5>
@@ -1226,7 +1226,7 @@ async def login(request: models.LoginRequest):
                 By being able to add custom headers to each request, this would
                 allow us to authenticate necessary requests with a custom
                 Whisper API key so that users couldn't make unauthenticated
-                requets. For our automated end-to-end tests, please see
+                requets. For our automated tests, please see
                 <a href="#line8">Writing Tests</a>.
               </p>
             </section>
@@ -1929,14 +1929,14 @@ async def login(request: models.LoginRequest):
                 and behavior in the React-based Whisper Client interface.
               </p>
 
-              <h4 id="line8_2">End-to-End Tests</h4>
+              <h4 id="line8_2">Integration Tests</h4>
               <img
-                src="images/upload/python_e2e_test.png"
-                alt="End-to-End tests image"
+                src="images/upload/python_integration_test.png"
+                alt="Integration tests image"
                 style="max-width: 800px; width: 100%; height: auto"
               />
               <p>
-                Our <strong>end-to-end (E2E) tests</strong> simulate real user
+                Our <strong>integration tests</strong> simulate real user
                 interactions and validate the system as a whole. Written in
                 Python using <strong>pytest</strong>, these tests interact with
                 live API endpoints, ensuring that requests and responses
@@ -1944,7 +1944,7 @@ async def login(request: models.LoginRequest):
               </p>
 
               <p>
-                Each E2E test covers scenarios like chat creation, user login,
+                Each integration test covers scenarios like chat creation, user login,
                 message sending, and permission validation. These tests help
                 verify integration between components and provide high
                 confidence that the endpoints behave correctly in
@@ -1954,17 +1954,17 @@ async def login(request: models.LoginRequest):
               <h4 id="line8_3">How to Run the Tests</h4>
               <p>
                 To ensure the stability and reliability of our application,
-                we’ve set up both unit and end-to-end test suites. You can run
+                we’ve set up both unit and integration test suites. You can run
                 them locally using the following commands:
               </p>
 
-              <h5>🧪 Backend Unit Tests (Python)</h5>
+              <h5> Backend Unit Tests (Python)</h5>
               <pre><code>pytest tests/unit_tests</code></pre>
 
-              <h5>🚀 End-to-End Tests (Python)</h5>
+              <h5> Backend Integration Tests (Python)</h5>
               <pre><code>pytest tests/end_to_end_tests</code></pre>
 
-              <h5>🧩 Frontend Unit Tests (TypeScript)</h5>
+              <h5> Frontend Unit Tests (TypeScript)</h5>
               <pre><code>npm run test</code></pre>
 
               <h5>Testing in VSCode</h5>
