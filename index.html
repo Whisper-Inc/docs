@@ -157,6 +157,9 @@
                     <li>
                       <a href="#line4_3">Login</a>
                     </li>
+                      <a href="line4_4">Frontend UI Refresh</a>
+                    <li>
+                    </li>
                   </ul>
                 </li>
                 <li>
@@ -893,49 +896,107 @@
 
                 <h2 id="line4_2">Integrating with Backend</h2>
                 <p>
-                  As our main components have been developed, I now moved onto
+                  As our main components have been developed, we now moved onto
                   creating model components to define requests and responses
                   that will be sent to the backend API endpoints.
                 </p>
                 <p>Here is an exmple of create chat request:</p>
                 <pre class="brush: js">
-                  public async createGroupChat(
-                      initiator: string,
-                      participants: string[],
-                      chatName: string
-                  ): Promise {string} {
-                      const requestBody = {
-                          initiator: initiator,
-                          chat_name: chatName,
-                          participants: participants,
-                          is_group: true,
-                      }};
+                  export interface CreateChatRequest {
+                    initiator: string;
+                    chat_name: string;
+                    participants: string | string[];
+                    is_group: boolean;
+                  }
                   </pre
                 >
                 <p>
                   I have also defined controller components that will be sending
-                  the actual requests to to the backend endpoins. The controller
-                  then uses the model to process the data and communicates this
-                  with the view components so that the data can be displayed
-                  accordingly:
+                  the actual requests to to the backend endpoins. 
                 </p>
 
                 <pre class="brush: js">
-                    try {
-                      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}create-chat`, {
-                          method: "POST",
-                          headers: {
-                              "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify(requestBody),
+                  export const createChatRequest = (
+                    request: CreateChatRequest,
+                    token: string
+                  ): Promise<CreateChatResponse> => {
+                    return fetch(`${whisperCore}/create-chat`, {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                      },
+                      body: JSON.stringify(request),
+                    })
+                      .then((response) =>
+                        response
+                          .json()
+                          .then((data) => ({ data, ok: response.ok, status: response.status }))
+                      )
+                      .then(({ data, ok, status }) => {
+                        if (!ok) {
+                          if (status === 409) {
+                            throw new Error("Chat name already exists");
+                          }
+                          throw new Error(data.detail || `Failed to create chat: ${status}`);
+                        }
+                        return data;
+                      })
+                      .catch((error) => {
+                        console.error("Create chat error:", error);
+                        throw error;
                       });
-          
-                      if (!response.ok) {
-                          throw new Error("Failed to create chat");
-                      }
-                      const responseData = await response.json();
-                    }
+};
                   </pre
+                >
+
+                <p>
+                  We also created a handler function which can be called by the view components and this further isolated the layers and therefore prevents tight coupling.
+                </p>
+
+                <pre class="brush: js">
+                  export const createGroupChatHandler = async (
+                    chatName: string,
+                    participants: string[]
+                  ): Promise<string | null> => {
+                    try {
+                      const token = Cookies.get("token");
+                      const username = Cookies.get("username");
+                  
+                      if (!token || !username) {
+                        return redirectToLogin("You need to be logged in to create a group chat");
+                      }
+                  
+                      if (!chatName || chatName.trim() === "") {
+                        errorHandler("Group chat name is required", "error");
+                        return null;
+                      }
+                  
+                      if (!participants || participants.length === 0) {
+                        errorHandler(
+                          "You must add at least one participant to the group",
+                          "error"
+                        );
+                        return null;
+                      }
+                  
+                      const chatData = await createChatRequest(
+                        {
+                          initiator: username,
+                          chat_name: chatName,
+                          participants: participants,
+                          is_group: true,
+                        },
+                        token
+                      );
+                  
+                      return chatData.chat_id;
+                    } catch (error: unknown) {
+                      return handleAsyncError(error, "An unexpected error occurred while creating the group chat.", null);
+                    }
+                  };
+                }
+               </pre
                 >
 
                 <p>
@@ -945,20 +1006,38 @@
                 </p>
 
                 <pre class="brush: js">
-                    const handleCreateChat = async () => {
-                      if (!chatName || selectedParticipants.length === 0) return;
-                      try {
-                          const chatId = await createGroupChat("John Doe", selectedParticipants, chatName);
-                          if (onCreateChat) {
-                              onCreateChat(chatId, selectedParticipants);
-                          }
-                         
-                          setChatName("");
-                          setSelectedParticipants([]);
-                          onClose();
-                      } catch (error) {
-                          console.log("Error when creating chat:", error);
+                    const handleCreateDirectChat = async (userName: string): Promise<void> => {
+                    const existingChat: Chat | undefined = chats.find(
+                      (chat) => chat.name === userName && !chat.isGroup
+                    );
+                
+                    if (existingChat) {
+                      selectChat(existingChat.id);
+                      moveToTop(existingChat.id);
+                    } else {
+                      const responseChatId = await createDirectChatHandler(userName);
+                      if (!responseChatId) {
+                        errorHandler("Failed to create chat");
+                        return;
                       }
+                
+                      const newChat: Chat = {
+                        id: responseChatId,
+                        name: userName,
+                        lastMessage: "Start a conversation...",
+                        time: "Now",
+                        unread: 0,
+                        isGroup: false,
+                        initiator: username || "",
+                      };
+                
+                      setChats((prev) => [newChat, ...prev]);
+                      selectChat(newChat.id);
+                      setMessages((prev) => ({
+                        ...prev,
+                        [newChat.id]: [],
+                      }));
+                    }
                   };
                   </pre
                 >
@@ -1000,7 +1079,82 @@
                  /></a>
  
                  <p>Once users login, they will be taken to the main menu, ready to send messages. The token is cached, so if the user refreshes the page, they will not be asked to log back in.</p>
-              
+
+                <h2 id="line4_4">Frontend UI Refresh</h2>
+
+                <p>As part of agile development and updates, as a team, we decided to design a new user interface that is more intuitive and user friendly. This involved brainstorming sessions and design reviews.</p>
+
+                <h3>What we didn't change</h3>
+                <p>We decided to keep the some of the main components and their placements the same, such as the sidebar and the chat window, as these are standards in messaging services, which users would prefer. We also kept other smaller components
+                such as, search bars.</p>
+
+                <h3>What we changed</h3>
+
+                <p>The biggest change of all was the colour pallete. We realised our stakeholders would prefer a more decent white and black combo, as it makes it easier to spot different menus and buttons. It also provides the app a more mature 
+                aesthetic, which our stakeholders attending secondary school prefer over the previous blue colour scheme. We also decided to move the settings page under a different menu which can be navigated to using button, whereas before it was accessible using the
+                sidebar, as this made the home menu overcrowded. Having this different menu will help users to only see their chats and access setting only when they need to. Moreover, we also implemented a refresh UI design for the dialog/modal. The edit chat, leave chat, delete chat dialog are now all more aesthically pleasing and easier to use. </p>
+
+                <h3>Login/Signup Refresh</h3>
+
+                <a href="images/upload/loginRefresh.png" data-rel="prettyPhoto"
+                   ><img
+                     src="images/upload/loginRefresh.png"
+                     alt=""
+                     class="img-responsive img-thumbnail"
+                     style="
+                       width: 75%;
+                       max-width: 500px;
+                       margin: 1rem auto;
+                       display: block;
+                     "
+                 /></a>
+
+                <h3>Main Menu Refresh</h3>
+
+                <a href="images/upload/MainMenuRefresh.png" data-rel="prettyPhoto"
+                   ><img
+                     src="images/upload/MainMenuRefresh.png"
+                     alt=""
+                     class="img-responsive img-thumbnail"
+                     style="
+                       width: 75%;
+                       max-width: 500px;
+                       margin: 1rem auto;
+                       display: block;
+                     "
+                 /></a>
+
+                <h3>Setting Menu Refresh</h3>
+
+                <a href="images/upload/SettingMenuRefresh.png" data-rel="prettyPhoto"
+                   ><img
+                     src="images/upload/SettingMenuRefresh.png"
+                     alt=""
+                     class="img-responsive img-thumbnail"
+                     style="
+                       width: 75%;
+                       max-width: 500px;
+                       margin: 1rem auto;
+                       display: block;
+                     "
+                 /></a>
+
+                <h3>Edit Chat Dialog/Modal Refresh</h3>
+
+                <a href="images/upload/EditChatRefresh.png" data-rel="prettyPhoto"
+                   ><img
+                     src="images/upload/EditChatRefresh.png"
+                     alt=""
+                     class="img-responsive img-thumbnail"
+                     style="
+                       width: 75%;
+                       max-width: 500px;
+                       margin: 1rem auto;
+                       display: block;
+                     "
+                 /></a>
+
+                
               </div>
 
               <!-- end row -->
