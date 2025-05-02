@@ -50,3 +50,7 @@ Now, copy the localhost:3000 URL provided by Whisper Client, and paste it into t
 If you'd like to run the `whisper-core` tests, run `coverage run pytest`
 
 If you'd like to run the `whisper-client` tests, run `npm run test`
+
+# Running Enterprise
+
+Enterprise Core also uses FastAPI, so the server startup method will be the same as Whisper Core. Enterprise Client uses React/Next.js, so so the server startup method will be the same as Whisper Client.
