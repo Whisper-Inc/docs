@@ -1,49 +1,52 @@
-# Whisper documentation
+# Whisper: The Complete Setup Guide
 
-When writing documentation, consider the following questions:
+## 1. Start Web Sockets Server
 
-- Why did we make this decision?
-- What are the benefits of doing it this way?
-- What did this enable us to do?
+Run the following commands:
 
-## 🛠️ Components you can use in your documentation:
-
-### 1. Codeblock: create a `pre` html element like so:
-
-```html
-<pre class="brush: js">
-function hello():
-    return "hello"
-</pre>
+```bash
+git clone https://github.com/Whisper-Inc/whisper-ws.git
+cd whisper-ws/
+npm i
+npm run dev
 ```
 
-You can choose from the following languages:
+✅ Web socket server should be running
 
-- Python
-- Bash
-- Javascript
+## 2. Start Next.js Frontend Server
 
-### 2. Subtabs: Each tab has subtabs attached to it:
+Run the following commands:
 
-```html
-<a href="#line2">Choosing Technologies</a>
-<ul class="nav">
-  <li><a href="#line2_1">Frontend</a></li>
-  <li><a href="#line2_2">Server</a></li>
-  <li><a href="#line2_3">Database</a></li>
-</ul>
+```bash
+git clone https://github.com/Whisper-Inc/whisper-client.git
+cd whisper-client/
+npm i
+npm run dev
 ```
 
-If you want to add a functioning subtab, simply add it to the nav list, and give the element that you want to scroll to on click the same id as the one specified in the href. For example:
+✅ Client server should be running
 
-```html
-<li><a href="#line2_4">Deployment</a></li>
+## 3. Start FastAPI Backend Server
+
+Run the following commands:
+
+```bash
+git clone https://github.com/Whisper-Inc/whisper-core.git
+cd whisper-core/
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 main.py
 ```
 
-Where you'd have a title `deployment` using the following structure and id:
+✅ FastAPI server should be running
 
-```html
-<h4 id="line2_4">Deployment</h4>
-```
+## 4. View in Browser
 
-[Visit the docs](https://whisper-inc.github.io/docs)
+Now, copy the localhost:3000 URL provided by Whisper Client, and paste it into the browser. There are a few test users available for you to start chats with—start typing in 'test' and a few users should come up.
+
+## Run tests
+
+If you'd like to run the `whisper-core` tests, run `coverage run pytest`
+
+If you'd like to run the `whisper-client` tests, run `npm run test`
