@@ -1634,6 +1634,65 @@ async def login(request: models.LoginRequest):
                     </p>
                   </div>
                 </div>
+                <div>
+                  <h4 id="line7_2">Update: Migration to Modular Architecture with whisper-ws</h4>
+                      <p>
+                        As part of our commitment to scalability, performance, and long-term maintainability, we have migrated to a more modular architecture by introducing a dedicated WebSocket service, <code>whisper-ws</code>. Previously, our WebSocket server was bundled within the <code>whisper-client</code>, which allowed us to ship real-time features quickly in the early stages. However, as our user base grew and feature demands increased, this architecture began to show its limits.
+                      </p>
+
+                      <p>
+                        We realised that handling WebSocket connections inside the client service was creating unnecessary coupling, making it harder to scale, debug, and maintain. Additionally, we wanted a solution that could handle high traffic loads, support horizontal scaling, and enable specialised teams to improve real-time features without affecting the frontend or backend.
+                      </p>
+
+                      <p>
+                        To address these challenges, we introduced <code>whisper-ws</code> as a standalone microservice. This service is now responsible for managing all WebSocket connections, broadcasting real-time messages, and performing lightweight authentication by verifying users against <code>whisper-core</code> before allowing messages to pass through.
+                      </p>
+
+                      <h4>Updated System Architecture</h4>
+                      <pre class="mermaid">
+                      graph TD
+                        subgraph Frontend
+                          A[whisper-client]
+                        end
+
+                        subgraph Backend
+                          B[whisper-core]
+                        end
+
+                        subgraph WebSocket Service
+                          C[whisper-ws]
+                        end
+
+                        A -->|REST API| B
+                        A -->|WebSocket| C
+                        C -->|Auth check| B
+                        B -->|Auth response| C
+                        C -->|Real-time messages| A
+                      </pre>
+
+                      <h4>Why We Made This Change</h4>
+                      <ul>
+                        <li><strong>Scalability Needs:</strong> As usage grew, we needed the ability to scale the WebSocket layer independently to handle thousands of concurrent connections without overloading the backend.</li>
+                        <li><strong>Performance Improvements:</strong> Offloading real-time message handling from whisper-client reduced latency, improved message delivery speed, and freed up resources on the client tier.</li>
+                        <li><strong>Separation of Concerns:</strong> By decoupling WebSocket responsibilities, each service could specialise — whisper-core focuses on persistence and business logic, whisper-client on UI, and whisper-ws on real-time communication.</li>
+                        <li><strong>Maintainability:</strong> Isolated services simplify troubleshooting, code upgrades, and performance optimisations, reducing the risk of system-wide regressions.</li>
+                        <li><strong>Security & Reliability:</strong> whisper-ws authenticates every WebSocket connection through whisper-core, ensuring only authorised users can send or receive messages, improving overall system trustworthiness.</li>
+                        <li><strong>Future Flexibility:</strong> This architecture prepares us to introduce advanced real-time features (e.g., typing indicators, presence tracking, delivery receipts) without burdening the backend or frontend teams.</li>
+                      </ul>
+
+                      <h4>Benefits of the New Architecture</h4>
+                      <ul>
+                        <li><strong>Horizontal Scaling:</strong> whisper-ws can be horizontally scaled to handle growing traffic without impacting the backend or frontend.</li>
+                        <li><strong>Improved Resilience:</strong> Failures in the WebSocket layer are now isolated and do not affect core backend operations or user interfaces.</li>
+                        <li><strong>Faster Development Cycles:</strong> Dedicated teams can work on whisper-ws, whisper-core, and whisper-client in parallel, speeding up delivery of features and improvements.</li>
+                        <li><strong>Better Monitoring & Observability:</strong> Logs, metrics, and performance can be tracked per service, allowing more precise detection and resolution of issues.</li>
+                      </ul>
+
+                      <p>
+                        Overall, this migration positions our system to support rapid growth, deliver a superior user experience, and evolve with the demands of modern real-time applications.
+                      </p>
+
+                </div>
               </div>
               <section id="line12" class="section">
                 <div class="row">
@@ -1643,10 +1702,14 @@ async def login(request: models.LoginRequest):
                       <p>Mahbubur Rahman</p>
                       <hr />
                     </h2>
+                    
                   </div>
+                  
                   <!-- end col -->
                 </div>
                 <!-- end row -->
+
+                
 
                 <section>
                   <div class="row">
